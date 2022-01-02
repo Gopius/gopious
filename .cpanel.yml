@@ -1,0 +1,7 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/gopius/build.gopius.com/
+    - export DEPLOYPATHSTORE=/home/gopius/build.gopius.com/storage
+    - /bin/cp -r * $DEPLOYPATH #copy all from root
+#    - /bin/cp -r ./public/* $DEPLOYPATH/public_html/
+    
