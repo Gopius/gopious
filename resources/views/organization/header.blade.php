@@ -197,7 +197,7 @@
 										<!--end::Item-->
 										<!--begin::Item-->
 										<li class="nav-item mr-3">
-											<a href="{{ route('organization_appearance') }}" class="nav-link py-4 px-6  {{$header=='appearance'?'active':''}}" role="tab">Appearance</a>
+											<a href="{{ route('organization_appearance') }}" class="nav-link py-4 px-6  {{$header=='appearance'?'active':''}}" role="tab">Settings</a>
 										</li>
 										<!--end::Item-->
 
@@ -719,7 +719,7 @@
 										<!--end::Item-->
 										<!--begin::Item-->
 										<li class="nav-item mr-2">
-											<a href="{{ route('organization_appearance') }}" class="nav-link btn btn-clean {{$header=='appearance'?'active':''}}"  role="tab">Appearance</a>
+											<a href="{{ route('organization_appearance') }}" class="nav-link btn btn-clean {{$header=='appearance'?'active':''}}"  role="tab">Settings</a>
 										</li>
 										<!--end::Item-->
 										<!--begin::Item-->

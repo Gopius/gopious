@@ -23,7 +23,7 @@
 												</div>
 												<div class="card-toolbar">
 													<a href="{{ route('organization_add_bulk_user') }}">
-														<button type="reset" class="btn btn-success mr-2">Add Multiple Users</button>
+														<button type="reset" class="btn btn-success mr-2">+ Multiple Users</button>
 													</a>
 
 
@@ -49,7 +49,7 @@
 													<div class="card-header py-3">
 														<div class="card-title align-items-start flex-column">
 															<h3 class="card-label font-weight-bolder ">Add New User</h3>
-															<span class="text-muted font-weight-bold font-size-sm mt-1">Enter User details and submit</span>
+															<span class="text-muted font-weight-bold font-size-sm mt-1">Enter User details and save</span>
 														</div>
 														<div class="card-toolbar">
 															<button type="submit" id="m_submit" class="btn btn-success mr-2">

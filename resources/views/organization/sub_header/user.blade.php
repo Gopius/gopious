@@ -13,7 +13,8 @@
 															<span class="menu-text">Users</span>
 														</a>
 													</li>
-													<li class="menu-item menu-item-{{$instructor??'rel'}}" aria-haspopup="true">
+
+													<!-- <li class="menu-item menu-item-{{$instructor??'rel'}}" aria-haspopup="true">
 														<a href="{{ route('organization_instuctors') }}" class="menu-link">
 															<span class="menu-text">Instructors</span>
 														</a>
@@ -22,13 +23,14 @@
 														<a href="{{ route('organization_learners') }}" class="menu-link">
 															<span class="menu-text">Learners</span>
 														</a>
-													</li>
+													</li> -->
+
 													<li class="menu-item menu-item-{{$new_instructor??'rel'}}" aria-haspopup="true">
 														<a href="{{ route('organization_add_user') }}" class="menu-link">
-															<span class="menu-text">+ Add User</span>
+															<span class="menu-text">+ New User</span>
 														</a>
 													</li>
-													
+
 												</ul>
 												<!--end::Nav-->
 											</div>
@@ -49,6 +51,5 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
-					
+
 					<!--end::Content-->
-					

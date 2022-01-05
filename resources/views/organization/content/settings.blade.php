@@ -62,6 +62,7 @@
 														</div>
 														<!--end::Symbol-->
 														<!--begin::Title-->
+
 														<div>
 															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">{{Auth::guard('organization')->user()->phone}} </a>
 															<div class="font-size-sm text-muted font-weight-bold mt-1">Phone Number</div>
@@ -177,7 +178,7 @@
 																</span>
 															</div><br>
 															<div class="image-input image-input-outline ml-10 mt-5" id="kt_square_logo" style="width: 60px; height: 60px;">
-																<div class="image-input-wrapper" style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_square_icon_url) }}); width: 60px; height: 60px;background-position: center; background-size: contain;"></div>
+																<div class="image-input-wrapper" style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_square_icon_url) }}); width: 60px; height: 60px;background-position: center; background-size: contain;"><img src="https://gopius.com/wp-content/uploads/2021/07/cropped-Gopius-LOGO-Blue.png"  style="width: 60px; height: 60px;" alt=""></div>
 																<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
 																	<i class="fa fa-pen icon-sm text-muted"></i>
 																	<input type="file" name="profile_avatar_icon" accept=".png, .jpg, .jpeg">

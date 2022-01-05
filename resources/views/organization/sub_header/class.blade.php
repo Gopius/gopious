@@ -15,10 +15,10 @@
 													</li>
 													<li class="menu-item menu-item-{{$new_class??'rel'}}" aria-haspopup="true">
 														<a href="{{ route('organization_class_new') }}" class="menu-link">
-															<span class="menu-text">+ Add Class</span>
+															<span class="menu-text">+ New Class</span>
 														</a>
 													</li>
-													
+
 												</ul>
 												<!--end::Nav-->
 											</div>
@@ -39,6 +39,5 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
-					
+
 					<!--end::Content-->
-					

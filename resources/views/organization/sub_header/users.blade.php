@@ -15,10 +15,10 @@
 													</li>
 													<li class="menu-item menu-item-{{$add_user??'rel'}}" aria-haspopup="true">
 														<a href="{{ route('organization_learners') }}" class="menu-link">
-															<span class="menu-text">Add Users</span>
+															<span class="menu-text">New Users</span>
 														</a>
 													</li>
-													
+
 												</ul>
 												<!--end::Nav-->
 											</div>
@@ -39,6 +39,5 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
-					
+
 					<!--end::Content-->
-					

@@ -54,7 +54,7 @@
 																</svg>
 																<!--end::Svg Icon-->
 															</span>
-															<a href="{{ route('organization_add_user') }}" class="text-warning font-weight-bold font-size-h6 mt-2">New Users</a>
+															<a href="{{ route('organization_add_user') }}" class="text-warning font-weight-bold font-size-h6 mt-2">Edit Profile</a>
 														</div>
 													</div>
 													<!--end::Row-->
@@ -194,7 +194,14 @@
                                                     <div class="card-label">Classes
                                                     <div class="font-size-sm text-muted mt-2">{{$classes->count()}} Total Users</div></div>
                                                 </h3>
+                                                <div class="card-footer border-0 mb-5 text-right">
+												<a href="{{ route('organization_classes') }}">
+                                                    <button class="btn btn-transparent">
+                                                        view all
+                                                    </button>
+                                                </a>
 
+											</div>
 											</div>
 											<!--end::Header-->
 											<!--begin::Body-->
@@ -230,14 +237,14 @@
 												<!--end::Item-->
 											</div>
 											<!--end::Body-->
-                                            <div class="card-footer border-0 mb-5 text-right">
+                                            <!-- <div class="card-footer border-0 mb-5 text-right">
 												<a href="{{ route('organization_classes') }}">
                                                     <button class="btn btn-transparent">
-                                                        view all
+                                                        view alll
                                                     </button>
                                                 </a>
 
-											</div>
+											</div> -->
 										</div>
 										<!--end::List Widget 7-->
 									</div>
