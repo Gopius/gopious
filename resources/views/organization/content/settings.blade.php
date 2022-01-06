@@ -20,7 +20,8 @@
 												<!--begin::User-->
 												<div class="d-flex align-items-center">
 													<div class="image-input image-input-outline symbol " id="kt_user_avatar" style="background-image: url({{asset(!Auth::guard('organization')->user()->org_avatar_url?'assets/media/stock-600x400/img-70.jpg':'')}}); width: 100%;height: 160px;">
-														<div class="image-input-wrapper symbol " style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_avatar_url) }}); width: 100%;height: 160px;background-position: center; background-size: contain;"></div>
+														<div class="image-input-wrapper symbol " style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_avatar_url) }}); width: 100%;height: 160px;background-position: center"></div>
+                                                        <!-- <--"background-size: contain;"-->
 														<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
 															<i class="fa fa-pen icon-sm text-muted"></i>
 															<input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg">
@@ -178,7 +179,10 @@
 																</span>
 															</div><br>
 															<div class="image-input image-input-outline ml-10 mt-5" id="kt_square_logo" style="width: 60px; height: 60px;">
-																<div class="image-input-wrapper" style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_square_icon_url) }}); width: 60px; height: 60px;background-position: center; background-size: contain;"><img src="https://gopius.com/wp-content/uploads/2021/07/cropped-Gopius-LOGO-Blue.png"  style="width: 60px; height: 60px;" alt=""></div>
+																<div class="image-input-wrapper" style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_square_icon_url) }}); width: 60px; height: 60px;background-position: center; background-size: contain;">
+
+                                                                 <img src="https://gopius.com/wp-content/uploads/2021/07/cropped-Gopius-LOGO-Blue.png"  style="width: 46px; height: 42px; opacity: 0.1; margin:5px,0,0,5px" alt="">
+                                                            </div>
 																<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
 																	<i class="fa fa-pen icon-sm text-muted"></i>
 																	<input type="file" name="profile_avatar_icon" accept=".png, .jpg, .jpeg">

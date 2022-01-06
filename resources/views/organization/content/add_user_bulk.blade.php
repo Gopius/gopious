@@ -9,27 +9,31 @@
 								<!--begin::Profile Account Information-->
 								<div class="d-flex flex-row">
 									<!--begin::Aside-->
-									
+
 									<!--end::Aside-->
 									<!--begin::Content-->
 									<div class="flex-row-fluid ml-lg-8">
 										<!--begin::Card-->
 										<div class="card card-custom">
 											<!--begin::Header-->
-											<div class="card-header py-3 border-0">
+											<div class="card-header py-3 border-0 d-flex">
 												<div class="card-title align-items-start flex-column">
+
 													<h3 class="card-label font-weight-bolder text-dark">Add Users</h3>
-													<span class="text-muted font-weight-bold font-size-sm mt-1">Copy and paste from a spreadsheet to add multiple students.<br> 
+													<span class="text-muted font-weight-bold font-size-sm mt-1">Copy and paste from a spreadsheet to add multiple students.<br>
 													This will generate accounts with each student’s login information.</span>
 													<code>* columns include: First Name, Last Name, Email, User Type. </code>
 													<code>* User Type: Learner or Instructor </code>
 
 												</div>
-												
+												<div class="card-toolbar">
+															<button type="submit" class="btn btn-success mr-2">Add Users</button>
+															<button type="reset" class="btn btn-secondary">Clear</button>
+														</div>
 											</div>
 
 											<div class="form-group row">
-												
+
 												<div class="col-lg-4 col-md-9 col-sm-12 mx-auto">
 													<div class="dropzone dropzone-default dropzone-success" id="kt_dropzone_3">
 														<div class="dropzone-msg dz-message needsclick">
@@ -52,14 +56,14 @@
 											@endif
 											<form class="form" method="POST" id="kt_form">
 												@csrf
-												
+
 												<!--begin::Body-->
 
 												<div class="card-body">
-													
+
 														<!--begin::Form Group-->
 														<!--begin::Form-->
-											
+
 											<table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
 												<thead>
 													<tr>
@@ -94,7 +98,7 @@
 																@foreach ($categories as $category)
 																	<option value="{{$category->cat_id}}" >{{$category->cat_title}}</option>
 																@endforeach
-														      
+
 														     </select>
 														</td> --}}
 														<td>
@@ -108,27 +112,27 @@
 															<button class="btn btn-danger" onclick="removeRow(this);">Remove</button>
 														</td>
 													</tr>
-													
-													
-													
+
+
+
 												</tbody>
 											</table>
 
 											<!--end::Form-->
 
-														<div class="card-toolbar">
+														<!-- <div class="card-toolbar">
 															<button type="submit" class="btn btn-success mr-2">Add Users</button>
 															<button type="reset" class="btn btn-secondary">Clear</button>
-														</div>
-														
-													
-													
-													
-													
+														</div> -->
 
-													
-													
-													
+
+
+
+
+
+
+
+
 												</div>
 												<!--end::Body-->
 											</form>
@@ -146,4 +150,3 @@
 					</div>
 					<!--end::Content-->
 					<!--end::Content-->
-					

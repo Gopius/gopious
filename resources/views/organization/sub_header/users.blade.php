@@ -15,7 +15,7 @@
 													</li>
 													<li class="menu-item menu-item-{{$add_user??'rel'}}" aria-haspopup="true">
 														<a href="{{ route('organization_learners') }}" class="menu-link">
-															<span class="menu-text">New Users</span>
+															<span class="menu-text"><i class="fas fa-plus"></i>&nbsp;New Users</span>
 														</a>
 													</li>
 
