@@ -178,7 +178,7 @@
   <input type="hidden" value="learner" name="type">
 
     <label for="exampleFormControlFile1">Upload your CSV</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    <input type="file" class="form-control-file" name="file" id="exampleFormControlFile1">
   </div>
   <button type="submit" class="btn btn-primary float-right">Save changes</button>
 </form>
@@ -195,7 +195,7 @@
           @csrf
 <div class="form-group">
 <label for="exampleFormControlFile1">Upload your CSV</label>
-<input type="file" class="form-control-file" id="exampleFormControlFile1">
+<input type="file" class="form-control-file" name="file" id="exampleFormControlFile1">
 </div>
 <button type="submit" class="btn btn-primary float-right">Save changes</button>
 </form>
