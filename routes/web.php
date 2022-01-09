@@ -96,8 +96,9 @@ Route::group(['domain' => 'app.' . $domain, 'prefix' => 'organization',], functi
         Route::get('/users-all', [Organization::class, 'allUsers']);
         Route::get('/users-add', [Organization::class, 'addUser'])->name('organization_add_user');
         Route::post('/users-add', [Organization::class, 'processNewUser']);
-        Route::get('/users-add-bulk', [Organization::class, 'addBulkUser'])->name('organization_add_bulk_user');;
-        Route::post('/users-add-bulk', [Organization::class, 'processNewBulkUser']);;
+        Route::post('/importCsv', [Organization::class, 'importCsv'])->name('importCsv');
+        Route::get('/users-add-bulk', [Organization::class, 'addBulkUser'])->name('organization_add_bulk_user');
+        Route::post('/users-add-bulk', [Organization::class, 'processNewBulkUser']);
         Route::get('/users/delete/{user_id}/{type}', [Organization::class, 'deleteUser']);
 
         Route::get('/instructors', [InstructorController::class, 'instructor'])->name('organization_instuctors');

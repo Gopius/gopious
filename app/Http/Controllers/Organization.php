@@ -268,8 +268,73 @@ class Organization extends Controller
         $data['categories']  = Category::where("org_no", Auth::guard('organization')->user()->org_id)->cursor();
         return view('organization.dashboard',  $data);
     }
+
+    function csvToArray($filename = '', $delimiter = ',')
+    {
+        if (!file_exists($filename) || !is_readable($filename))
+            return false;
+
+        $header = null;
+        $data = array();
+        if (($handle = fopen($filename, 'r')) !== false)
+        {
+            while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
+            {
+                if (!$header)
+                    $header = $row;
+                else
+                    $data[] = array_combine($header, $row);
+            }
+            fclose($handle);
+        }
+
+        return $data;
+    }
+
+    public function importCsv(Request $request)
+    {
+        dd($request->all());
+        $file = public_path('test.csv');
+
+        $customerArr = $this->csvToArray($file);
+        $user_type=$request->type;
+
+        if ($user_type=='learner') {
+        $data=[];
+
+            foreach ($customerArr as $key => $value) {
+                $data[$key]['learner_name'] = $value['first_name']." ".$value['last_name'];
+                $data[$key]['learner_email'] = $value['email'];
+                $data[$key]['learner_phone'] = $value['phone'];
+                $data[$key]['open_password'] = Str::random(6);
+                $data[$key]['password'] = $data[$key]['open_password'];
+                $data[$key]['org_no'] = Auth::guard('organization')->user()->org_id;
+            }
+            Learner::create($data);
+
+        }
+        if ($user_type=='instructor') {
+        $data=[];
+
+            foreach ($customerArr as $key => $value) {
+                $data[$key]['learner_name'] = $value['first_name']." ".$value['last_name'];
+                $data[$key]['learner_email'] = $value['email'];
+                $data[$key]['learner_phone'] = $value['phone'];
+                $data[$key]['open_password'] = Str::random(6);
+                $data[$key]['password'] = $data[$key]['open_password'];
+                $data[$key]['org_no'] = Auth::guard('organization')->user()->org_id;
+            }
+            Instructor::create($data);
+
+        }
+        return redirect()->route('organization_users')->with('message', 'Users Added Successfully');
+
+    }
+
+
     function processNewUser(Request $request)
     {
+        dd($request->all());
         // dd($request->input('type'));die();
         if ($request->input('type') == 'instructor') {
             $validated = $request->validate([
