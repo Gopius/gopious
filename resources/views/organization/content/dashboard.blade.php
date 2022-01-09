@@ -109,6 +109,7 @@
 											<div class="card-body">
 												<!--begin::Chart-->
 												<div id="kt_mixed_widget_18_chart" style="height: auto"></div>
+                                                <input type="hidden" value="100" id="yawar_jugar">
 												<!--end::Chart-->
 												<!--begin::Items-->
 												<div class="mt-0 position-relative zindex-0">

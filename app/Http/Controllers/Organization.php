@@ -293,11 +293,14 @@ class Organization extends Controller
 
     public function importCsv(Request $request)
     {
-        dd($request->all());
-        $file = public_path('test.csv');
+        // dd($request->file);
+        $file = $request->file;
 
-        $customerArr = $this->csvToArray($file);
-        $user_type=$request->type;
+        try {
+            $customerArr = $this->csvToArray($file);
+            $user_type=$request->type;
+
+
 
         if ($user_type=='learner') {
         $data=[];
@@ -309,26 +312,29 @@ class Organization extends Controller
                 $data[$key]['open_password'] = Str::random(6);
                 $data[$key]['password'] = $data[$key]['open_password'];
                 $data[$key]['org_no'] = Auth::guard('organization')->user()->org_id;
+                Learner::create($data[$key]);
             }
-            Learner::create($data);
 
         }
         if ($user_type=='instructor') {
         $data=[];
 
             foreach ($customerArr as $key => $value) {
-                $data[$key]['learner_name'] = $value['first_name']." ".$value['last_name'];
-                $data[$key]['learner_email'] = $value['email'];
-                $data[$key]['learner_phone'] = $value['phone'];
+                $data[$key]['instr_name'] = $value['first_name']." ".$value['last_name'];
+                $data[$key]['instr_email'] = $value['email'];
+                $data[$key]['instr_phone'] = $value['phone'];
                 $data[$key]['open_password'] = Str::random(6);
                 $data[$key]['password'] = $data[$key]['open_password'];
                 $data[$key]['org_no'] = Auth::guard('organization')->user()->org_id;
+                Instructor::create($data[$key]);
             }
-            Instructor::create($data);
 
         }
         return redirect()->route('organization_users')->with('message', 'Users Added Successfully');
 
+    } catch (\Throwable $th) {
+        return redirect()->back()->with('message', $th->getMessage());
+    }
     }
 
 

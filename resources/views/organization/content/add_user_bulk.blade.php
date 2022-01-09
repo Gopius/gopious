@@ -172,7 +172,7 @@
           <!-- Learner -->
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
-      <form action="{{route('importCsv')}}" method="post">
+      <form action="{{route('importCsv')}}" method="post" enctype="multipart/form-data">
           @csrf
   <div class="form-group">
   <input type="hidden" value="learner" name="type">
@@ -189,11 +189,12 @@
 <!-- Intstrutor -->
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
-  <input type="hidden" value="instructor" name="type">
 
-  <form action="{{route('importCsv')}}" method="post">
+  <form action="{{route('importCsv')}}" method="post" enctype="multipart/form-data">
           @csrf
 <div class="form-group">
+  <input type="hidden" value="instructor" name="type">
+
 <label for="exampleFormControlFile1">Upload your CSV</label>
 <input type="file" class="form-control-file" name="file" id="exampleFormControlFile1">
 </div>

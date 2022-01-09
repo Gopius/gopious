@@ -3396,6 +3396,8 @@ var KTWidgets = function() {
 
     var _initMixedWidget18 = function() {
         var element = document.getElementById("kt_mixed_widget_18_chart");
+        var yawar_jugar = $('#yawar_jugar').val();
+
         var height = parseInt(KTUtil.css(element, 'height'));
 
         if (!element) {
@@ -3403,7 +3405,7 @@ var KTWidgets = function() {
         }
 
         var options = {
-            series: [20],
+            series: [yawar_jugar],
             chart: {
                 // height: height,
                 type: 'radialBar',
