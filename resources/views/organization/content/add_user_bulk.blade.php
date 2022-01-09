@@ -27,7 +27,7 @@
 
 												</div>
 												<div class="card-toolbar">
-															<button type="submit" class="btn btn-success mr-2">Add Users</button>
+															<button type="submit" class="btn btn-success mr-2"data-toggle="modal" data-target="#exampleModalCenter">Add Users</button>
 															<button type="reset" class="btn btn-secondary">Clear</button>
 														</div>
 											</div>
@@ -125,14 +125,6 @@
 															<button type="reset" class="btn btn-secondary">Clear</button>
 														</div> -->
 
-
-
-
-
-
-
-
-
 												</div>
 												<!--end::Body-->
 											</form>
@@ -150,3 +142,76 @@
 					</div>
 					<!--end::Content-->
 					<!--end::Content-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Multiple User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i>
+          <!-- <span aria-hidden="False">&times;asdfgds</span> -->
+        </button>
+      </div>
+
+        <!-- Tabs -->
+        <div class="container">
+
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Learner</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Instructor</a>
+      </li>
+    </ul>
+        </div>
+      <!-- Tabs end -->
+      <div class="modal-body">
+      <div class="tab-content" id="pills-tabContent">
+          <!-- Learner -->
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+      <form action="{{route('importCsv')}}" method="post">
+          @csrf
+  <div class="form-group">
+  <input type="hidden" value="learner" name="type">
+
+    <label for="exampleFormControlFile1">Upload your CSV</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+</form>
+<button type="button" class="btn btn-primary float-right">Save changes</button>
+
+  </div>
+<!-- Learner End -->
+
+<!-- Intstrutor -->
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+  <input type="hidden" value="instructor" name="type">
+
+  <form action="{{route('importCsv')}}" method="post">
+          @csrf
+<div class="form-group">
+<label for="exampleFormControlFile1">Upload your CSV</label>
+<input type="file" class="form-control-file" id="exampleFormControlFile1">
+</div>
+</form>
+<button type="button" class="btn btn-primary float-right">Save changes</button>
+  </div>
+</div>
+
+      </div>
+      <!-- Instructor End -->
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
