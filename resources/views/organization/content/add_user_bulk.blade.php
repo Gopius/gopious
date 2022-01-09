@@ -22,17 +22,19 @@
 													<h3 class="card-label font-weight-bolder text-dark">Add Users</h3>
 													<span class="text-muted font-weight-bold font-size-sm mt-1">Copy and paste from a spreadsheet to add multiple students.<br>
 													This will generate accounts with each student’s login information.</span>
-													<code>* columns include: First Name, Last Name, Email, User Type. </code>
-													<code>* User Type: Learner or Instructor </code>
+													<code>* columns include: First Name, Last Name, Email, Phone Number. </code>
+													<!-- <code>* User Type: Learner or Instructor </code> -->
 
 												</div>
 												<div class="card-toolbar">
-															<button type="submit" class="btn btn-success mr-2"data-toggle="modal" data-target="#exampleModalCenter">Add Users</button>
+
+
+															<button type="submit" class="btn btn-success mr-2"data-toggle="modal" data-target="#exampleModalCenter">Upload Users</button>
 															<button type="reset" class="btn btn-secondary">Clear</button>
 														</div>
 											</div>
 
-											<div class="form-group row">
+											<!-- <div class="form-group row">
 
 												<div class="col-lg-4 col-md-9 col-sm-12 mx-auto">
 													<div class="dropzone dropzone-default dropzone-success" id="kt_dropzone_3">
@@ -42,7 +44,7 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<!--end::Header-->
 											<!--begin::Form-->
 											@if ($errors->any())
@@ -63,7 +65,7 @@
 
 														<!--begin::Form Group-->
 														<!--begin::Form-->
-
+<!--
 											<table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
 												<thead>
 													<tr>
@@ -116,7 +118,7 @@
 
 
 												</tbody>
-											</table>
+											</table> -->
 
 											<!--end::Form-->
 
@@ -158,6 +160,7 @@
         <div class="container">
 
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
       <li class="nav-item">
         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Learner</a>
       </li>
@@ -178,6 +181,8 @@
   <input type="hidden" value="learner" name="type">
 
     <label for="exampleFormControlFile1">Upload your CSV</label>
+    <a href="{{asset('test.csv')}}" download><i class="fas fa-download float-right" style=" color: #0BB7AF"> CSV Template</i></a>
+
     <input type="file" class="form-control-file" name="file" id="exampleFormControlFile1">
   </div>
   <button type="submit" class="btn btn-primary float-right">Save changes</button>
@@ -195,6 +200,8 @@
           @csrf
 <div class="form-group">
 <label for="exampleFormControlFile1">Upload your CSV</label>
+<a href="{{asset('test.csv')}}" download><i class="fas fa-download float-right" style=" color: #0BB7AF"> CSV Template</i></a>
+
 <input type="file" class="form-control-file" name="file" id="exampleFormControlFile1">
 </div>
 <button type="submit" class="btn btn-primary float-right">Save changes</button>
