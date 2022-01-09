@@ -18,7 +18,7 @@
 											<div class="card-body pt-4">
 
 												<!--begin::User-->
-												<div class="d-flex align-items-center">
+												{{-- <div class="d-flex align-items-center">
 													<div class="image-input image-input-outline symbol " id="kt_user_avatar" style="background-image: url({{asset(!Auth::guard('organization')->user()->org_avatar_url?'assets/media/stock-600x400/img-70.jpg':'')}}); width: 100%;height: 160px;">
 														<div class="image-input-wrapper symbol " style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_avatar_url) }}); width: 100%;height: 160px;background-position: center"></div>
                                                         <!-- <--"background-size: contain;"-->
@@ -35,10 +35,10 @@
 														</span>
 													</div>
 												</div>
-												<div class="form-text text-muted ">Allowed file types: png, jpg, jpeg.</div>
+												<div class="form-text text-muted ">Allowed file types: png, jpg, jpeg.</div> --}}
 												<!--end::User-->
 												<!--begin::Contact-->
-												<div class="py-9">
+												<div class="py-3">
 													<div class="d-flex align-items-center justify-content-between mb-2">
 
 
@@ -125,6 +125,7 @@
 
 										<div class="card card-custom">
 											<!--begin::Header-->
+
 											<div class="card-header py-3">
 												<div class="card-title align-items-start flex-column">
 													<h3 class="card-label font-weight-bolder text-success">Account Information</h3>
@@ -162,7 +163,7 @@
 															   <span class="form-text text-muted">Please enter your Orgnization Description ( maximum limit 100 words )</span>
 															</div>
 
-															<div class="image-input image-input-outline mr-5" id="kt_long_logo" style=" width: 100%; height: 60px;">
+															{{-- <div class="image-input image-input-outline mr-5" id="kt_long_logo" style=" width: 100%; height: 60px;">
 																<div class="image-input-wrapper" id="kt_user_avatar_logo" style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_long_icon_url) }}); width: 100%; height: 60px;background-position: center; background-size: contain;">
 
 																</div>
@@ -177,8 +178,8 @@
 																<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="" data-original-title="Remove avatar">
 																	<i class="ki ki-bold-close icon-xs text-muted"></i>
 																</span>
-															</div><br>
-															<div class="image-input image-input-outline ml-10 mt-5" id="kt_square_logo" style="width: 60px; height: 60px;">
+															</div><br> --}}
+															{{-- <div class="image-input image-input-outline ml-10 mt-5" id="kt_square_logo" style="width: 60px; height: 60px;">
 																<div class="image-input-wrapper" style="background-image: url({{ asset('storage/'.Auth::guard('organization')->user()->org_square_icon_url) }}); width: 60px; height: 60px;background-position: center; background-size: contain;">
 
                                                                  <img src="https://gopius.com/wp-content/uploads/2021/07/cropped-Gopius-LOGO-Blue.png"  style="width: 46px; height: 42px; opacity: 0.1; margin:5px,0,0,5px" alt="">
@@ -195,7 +196,7 @@
 																	<i class="ki ki-bold-close icon-xs text-muted"></i>
 																</span>
 															</div>
-														</div>
+														</div> --}}
 														<div class="col-sm-6">
 															<div class="form-group">
 															   <label>Organization Address:</label>
