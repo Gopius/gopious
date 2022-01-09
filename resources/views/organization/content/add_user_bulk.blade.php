@@ -180,8 +180,8 @@
     <label for="exampleFormControlFile1">Upload your CSV</label>
     <input type="file" class="form-control-file" id="exampleFormControlFile1">
   </div>
+  <button type="submit" class="btn btn-primary float-right">Save changes</button>
 </form>
-<button type="button" class="btn btn-primary float-right">Save changes</button>
 
   </div>
 <!-- Learner End -->
@@ -197,8 +197,8 @@
 <label for="exampleFormControlFile1">Upload your CSV</label>
 <input type="file" class="form-control-file" id="exampleFormControlFile1">
 </div>
+<button type="submit" class="btn btn-primary float-right">Save changes</button>
 </form>
-<button type="button" class="btn btn-primary float-right">Save changes</button>
   </div>
 </div>
 
