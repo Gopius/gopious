@@ -3453,7 +3453,7 @@ var KTWidgets = function() {
             stroke: {
                 lineCap: "round",
             },
-            labels: ["This Month"]
+            labels: ["Registered This Month"]
         };
 
         var chart = new ApexCharts(element, options);

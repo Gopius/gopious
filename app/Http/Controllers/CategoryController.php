@@ -47,15 +47,19 @@ class CategoryController extends Controller
             'cat_desc' => 'required',
             'cat_status' => 'required',
             'cat_max_student' => 'required',
-            'cover_image' => 'required|max:2048',
+            // 'cover_image' => 'required|max:2048',
         ]);
-        $cover_image = $request->file('cover_image');
+        if ($request->file('cover_image')) {
+            $cover_image = $request->file('cover_image');
+        }
         do {
             $validated['cat_code'] = strtoupper(substr(explode(' ', $validated['cat_title'])[0] ?? '', 0, 1)) . strtoupper(substr(explode(' ', $validated['cat_title'])[1] ?? '', 0, 1));
             $validated['cat_code'] .= '-' . Str::random(7 - strlen($validated['cat_code']));
             $cat_code_m = Category::where('cat_code', $validated['cat_code'])->first();
         } while ($cat_code_m != null);
-        $validated['cat_cover_image'] = $cover_image->store('class_cover_images', 'public');
+        if ($request->file('cover_image')) {
+            $validated['cat_cover_image'] = $cover_image->store('class_cover_images', 'public');
+        }
         $validated['org_no'] = Auth::guard('organization')->user()->org_id;
         // dd($validated);die();
         $course = Category::create($validated);
