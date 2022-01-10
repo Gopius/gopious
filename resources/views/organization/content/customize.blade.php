@@ -69,7 +69,7 @@
                                             </div>
 
                                               <!--begin::User-->
-											<div class="card-body float-right col-lg-6 col-md-6 col-sm-12">
+											{{-- <div class="card-body float-right col-lg-6 col-md-6 col-sm-12">
                                                 <label for="" class="favicon_label" >Enter your logo</label>
 
 												<div class="d-flex align-items-center " >
@@ -89,10 +89,10 @@
 														</span>
 													</div>
 												</div>
-                                                <div class="form-text text-muted ">Allowed file types: png, jpg, jpeg.</div>
+                                                <div class="form-text text-muted ">Allowed file types: png, jpg, jpeg.</div> --}}
 
 												<!--end::User-->
-                                                <label for="" class="favicon_label mt-8">Enter your favicon</label><br>
+                                                {{-- <label for="" class="favicon_label mt-8">Enter your favicon</label><br>
 
                                                 <div class="image-input image-input-outline ml-10 mt-5" id="kt_square_logo" style="width: 60px; height: 60px;">
 
@@ -112,7 +112,7 @@
                                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                                     </span>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             </div>
 											<!--end::Header-->
 											<!--begin::Form-->
