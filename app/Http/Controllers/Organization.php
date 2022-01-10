@@ -42,6 +42,17 @@ class Organization extends Controller
         $data['all_user'] = DB::select("SELECT DATE_FORMAT(created_at, '%m-%Y') new_date, COUNT(*) as numbers FROM
         ( SELECT created_at, 'learner', learner_email as email FROM `learners` where org_no = ? UNION SELECT created_at, 'instructor', instr_email as email FROM `instructors`  where org_no = ?)  n GROUP BY new_date ORDER BY new_date DESC LIMIT 5", [Auth::guard('organization')->user()->org_id, Auth::guard('organization')->user()->org_id]);
 
+        $count_total=$data['learners']->count()+$data['instructors']->count();
+        $this_month=Learner::where("org_no", Auth::guard('organization')->user()->org_id)->whereMonth('created_at', Carbon::now()->month)->count()
+        +
+        Instructor::where("org_no", Auth::guard('organization')->user()->org_id)->whereMonth('created_at', Carbon::now()->month)->count();
+
+        $x = $this_month;
+        $y = $count_total;
+
+        $percent = $x/$y;
+        $data['percent_age']= number_format( $percent * 100);
+
         return view('organization.dashboard',  $data);
     }
 
