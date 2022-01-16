@@ -13,8 +13,8 @@ class ChangeDefaultValue extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
-            $table->integer('active')->default(0)->change();
+        Schema::table('categories', function ($table) {
+            $table->string('cat_cover_image')->default('class_cover_images/default101.jpg')->change();
         });
     }
 
