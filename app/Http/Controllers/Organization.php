@@ -50,8 +50,13 @@ class Organization extends Controller
         $x = $this_month;
         $y = $count_total;
 
-        $percent = $x/$y;
-        $data['percent_age']= number_format( $percent * 100);
+        try {
+            $percent = $x/$y;
+            $data['percent_age']= number_format( $percent * 100);
+        } catch (\Throwable $th) {
+            $data['percent_age']= 0;
+        }
+
 
         return view('organization.dashboard',  $data);
     }
