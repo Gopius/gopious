@@ -223,7 +223,7 @@
 														<!--end::Symbol-->
 														<!--begin::Text-->
 														<div class="d-flex flex-column flex-grow-1 mr-2">
-															<a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">{{$class->cat_title}}</a>
+															<a href="{{ route('organization_classes') }}" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">{{$class->cat_title}}</a>
 
 														</div>
 														<!--end::Text-->
