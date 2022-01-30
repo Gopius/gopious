@@ -27,6 +27,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -69,6 +70,21 @@ class InstructorController extends Controller
             if (!isset($value)) unset($validated[$key]);
         }
         $instructor->update($validated);
+        if ($request->new_password != null) {
+            Instructor::where('instr_id', $instructor->instr_id)->update(['password' => Hash::make($request->new_password), 'open_password' => $request->new_password]);
+        }
+        if ($request->cat_class) {
+            $cat = Category::where('cat_id', $request->cat_class)->first();
+            $cat_class = DB::table('classes_instructors')->where('instr_no', $instructor->instr_id)->first();
+            // dd($cat_class);
+            if ($cat_class == null) {
+                // dd("if");
+                DB::table('classes_instructors')->create(['cat_no' => $cat->cat_id, 'instr_no' => $instructor->instr_id]);
+            } else {
+                // dd($cat->cat_id);
+                DB::table('classes_instructors')->where('instr_no', $instructor->instr_id)->update(['cat_no' => $cat->cat_id]);
+            }
+        }
         return redirect()->back()->with('message', 'Updated Successfully');
     }
     function deleteInstructor(Request $request, Instructor $instructor)
