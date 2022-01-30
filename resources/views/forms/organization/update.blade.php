@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
     <label for="">Status</label>
-    <select class="form-control"name=cat_status id="exampleFormControlSelect1">
+    <select class="form-control"name="cat_status" id="exampleFormControlSelect1">
         <option value="1">Open</option>
         <option value="0">Closed</option>
       <option value="2">Canceled</option>
