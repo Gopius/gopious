@@ -23,6 +23,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -321,7 +322,8 @@ class LearnerController extends Controller
 
     function updateLearner(Request $request, Learner $learner)
     {
-        // dd($request->input());
+        // dd("in");
+        // dd($request->all());
         $validated = $request->validate([
 
             'learner_name' => '',
@@ -333,7 +335,20 @@ class LearnerController extends Controller
         foreach ($validated as $key => $value) {
             if (!isset($value)) unset($validated[$key]);
         }
+
         $learner->update($validated);
+        if ($request->new_password != null) {
+            Learner::where('learner_id', $learner->learner_id)->update(['password' => Hash::make($request->new_password), 'open_password' => $request->new_password]);
+        }
+        if ($request->cat_class) {
+            $cat = Category::where('cat_id', $request->cat_class)->first();
+            $cat_class = DB::table('classes_learners')->where('learner_no', $learner->learner_id)->first();
+            if ($cat_class == null) {
+                DB::table('classes_learners')->create(['cat_no' => $cat->cat_id, 'learner_no' => $learner->learner_id]);
+            } else {
+                DB::table('classes_learners')->where('learner_no', $learner->learner_id)->update(['cat_no' => $cat->cat_id]);
+            }
+        }
         return redirect()->back()->with('message', 'Updated Successfully');
     }
 
