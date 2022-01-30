@@ -70,7 +70,8 @@ class CategoryController extends Controller
 
     function updateClass(Request $request, Category $class)
     {
-        // dd($request->input());
+        // dd($class);
+        // dd($request->cat_status);
         $validated = $request->validate([
 
             'cat_title' => '',
@@ -81,7 +82,12 @@ class CategoryController extends Controller
 
 
         ]);
+
         $class->update($validated);
+        if ($request->cat_status != "none") {
+            # code...
+            $class->update(['cat_status', $request->cat_status]);
+        }
         return redirect()->back()->with('message', 'Updated Successfully');
     }
 }
