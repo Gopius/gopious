@@ -90,7 +90,8 @@ Route::group(['domain' => 'app.' . $domain, 'prefix' => 'organization',], functi
         Route::get('/class-add', [CategoryController::class, 'newClass'])->name('organization_class_new');
         Route::post('/class-add', [CategoryController::class, 'processNewClass'])->name('organization_class_new');
         Route::post('/classes/update/{class}', [CategoryController::class, 'updateClass'])->name('organization_class_update');
-
+        Route::get('/showClass/{class}', [CategoryController::class, 'showClass']);
+        Route::get('/deleteClass/{class}', [CategoryController::class, 'deleteClass']);
 
         Route::get('/users', [Organization::class, 'user'])->name('organization_users');
         Route::get('/users-all', [Organization::class, 'allUsers']);

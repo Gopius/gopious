@@ -145,6 +145,7 @@ var KTDatatableDataLocalDemo = function() {
                             'class': ' label-light-warning'
                         },
                     };
+
                     return '<span class="label font-weight-bold label-lg ' + status[row.cat_status].class + ' label-inline">' + status[row.cat_status].title + '</span>';
                 },
             }, {
@@ -154,7 +155,9 @@ var KTDatatableDataLocalDemo = function() {
                 width: 125,
                 overflow: 'visible',
                 autoHide: false,
-                template: function(row) {
+                template: function (row) {
+                    console.log('row: ', row);
+
                     return`
                     <a
                     data-toggle="modal" href="#updateWholeForm"
@@ -165,6 +168,17 @@ var KTDatatableDataLocalDemo = function() {
                     data-route="${row.update_route}"
                     >
                         <i class="fa fa-edit mx-2 fs-4"></i>
+
+                    </a>
+                    <a href="/organization/showClass/${row.cat_id}"
+                    target="_blank"
+                    data-title="${row.cat_title}"
+                    data-description="${row.cat_desc}"
+                    data-size="${row.cat_max_student}"
+                    data-code="${row.cat_code}"
+                    data-route="${row.update_route}"
+                    >
+                        <i class="fa fa-eye mx-2 fs-4"></i>
 
                     </a>
                 `;

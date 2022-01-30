@@ -17,6 +17,16 @@ class CategoryController extends Controller
         $data['class'] = 'active';
         return view('organization.dashboard',  $data);
     }
+    function showClass($class)
+    {
+        $category = Category::where("cat_id", $class)->first();
+        return view('organization.content.showClass', compact('category'));
+    }
+    function deleteClass($class)
+    {
+        Category::where("cat_id", $class)->delete();
+        return redirect()->route('organization_classes');
+    }
 
     function allClass(Request $request)
     {
