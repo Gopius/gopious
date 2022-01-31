@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="email" name="email" class="form-control" autocomplete="off">
+                            <input autocomplete="false" type="email" name="email" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="">Phone</label>
@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                             <label for="">Change Password</label>
-                            <input type="password" name="new_password" class="form-control" autocomplete="off">
+                            <input autocomplete="false" type="password" name="new_password" class="form-control" autocomplete="off">
                         </div>
 
                         <button type="submit" class="btn btn-primary float-right">Save changes</button>

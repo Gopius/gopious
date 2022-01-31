@@ -79,7 +79,7 @@ class InstructorController extends Controller
             // dd($cat_class);
             if ($cat_class == null) {
                 // dd("if");
-                DB::table('classes_instructors')->create(['cat_no' => $cat->cat_id, 'instr_no' => $instructor->instr_id]);
+                DB::table('classes_instructors')->insert(['cat_no' => $cat->cat_id, 'instr_no' => $instructor->instr_id]);
             } else {
                 // dd($cat->cat_id);
                 DB::table('classes_instructors')->where('instr_no', $instructor->instr_id)->update(['cat_no' => $cat->cat_id]);

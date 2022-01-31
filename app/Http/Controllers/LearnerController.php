@@ -344,7 +344,7 @@ class LearnerController extends Controller
             $cat = Category::where('cat_id', $request->cat_class)->first();
             $cat_class = DB::table('classes_learners')->where('learner_no', $learner->learner_id)->first();
             if ($cat_class == null) {
-                DB::table('classes_learners')->create(['cat_no' => $cat->cat_id, 'learner_no' => $learner->learner_id]);
+                DB::table('classes_learners')->insert(['cat_no' => $cat->cat_id, 'learner_no' => $learner->learner_id]);
             } else {
                 DB::table('classes_learners')->where('learner_no', $learner->learner_id)->update(['cat_no' => $cat->cat_id]);
             }
