@@ -337,9 +337,9 @@ class LearnerController extends Controller
         }
 
         $learner->update($validated);
-        if ($request->new_password != null) {
-            Learner::where('learner_id', $learner->learner_id)->update(['password' => Hash::make($request->new_password), 'open_password' => $request->new_password]);
-        }
+        // if ($request->new_password != null) {
+        //     Learner::where('learner_id', $learner->learner_id)->update(['password' => Hash::make($request->new_password), 'open_password' => $request->new_password]);
+        // }
         if ($request->cat_class) {
             $cat = Category::where('cat_id', $request->cat_class)->first();
             $cat_class = DB::table('classes_learners')->where('learner_no', $learner->learner_id)->first();

@@ -1,4 +1,5 @@
-<div class="modal fade" id="updateWholeForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateWholeForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +10,8 @@
             </div>
             <div class="modal-body">
 
-                <div class="tab-pane fade show active" id="pills-persanol" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="tab-pane fade show active" id="pills-persanol" role="tabpanel"
+                    aria-labelledby="pills-home-tab">
                     <form method="POST">
                         @csrf
 
@@ -29,20 +31,15 @@
                             <label for="">Clsses</label>
                             <select class="form-control" name="cat_class" id="exampleFormControlSelect1">
                                 @php
-                                $categories= App\Models\Category::where('cat_status',1)->get();
+                                    $categories = App\Models\Category::where('cat_status', 1)->get();
                                 @endphp
 
                                 <option value="none" disabled selected>Select Class</option>
-                                @foreach($categories as $category)
-                                <option value="{{ $category->cat_id }}">{{ $category->cat_title }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->cat_id }}">{{ $category->cat_title }}</option>
                                 @endforeach
 
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Change Password</label>
-                            <input type="password" name="new_password" class="form-control" autocomplete="off">
                         </div>
 
                         <button type="submit" class="btn btn-primary float-right">Save changes</button>

@@ -70,9 +70,9 @@ class InstructorController extends Controller
             if (!isset($value)) unset($validated[$key]);
         }
         $instructor->update($validated);
-        if ($request->new_password != null) {
-            Instructor::where('instr_id', $instructor->instr_id)->update(['password' => Hash::make($request->new_password), 'open_password' => $request->new_password]);
-        }
+        // if ($request->new_password != null) {
+        //     Instructor::where('instr_id', $instructor->instr_id)->update(['password' => Hash::make($request->new_password), 'open_password' => $request->new_password]);
+        // }
         if ($request->cat_class) {
             $cat = Category::where('cat_id', $request->cat_class)->first();
             $cat_class = DB::table('classes_instructors')->where('instr_no', $instructor->instr_id)->first();

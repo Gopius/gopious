@@ -42,19 +42,19 @@ class Organization extends Controller
         $data['all_user'] = DB::select("SELECT DATE_FORMAT(created_at, '%m-%Y') new_date, COUNT(*) as numbers FROM
         ( SELECT created_at, 'learner', learner_email as email FROM `learners` where org_no = ? UNION SELECT created_at, 'instructor', instr_email as email FROM `instructors`  where org_no = ?)  n GROUP BY new_date ORDER BY new_date DESC LIMIT 5", [Auth::guard('organization')->user()->org_id, Auth::guard('organization')->user()->org_id]);
 
-        $count_total=$data['learners']->count()+$data['instructors']->count();
-        $this_month=Learner::where("org_no", Auth::guard('organization')->user()->org_id)->whereMonth('created_at', Carbon::now()->month)->count()
-        +
-        Instructor::where("org_no", Auth::guard('organization')->user()->org_id)->whereMonth('created_at', Carbon::now()->month)->count();
+        $count_total = $data['learners']->count() + $data['instructors']->count();
+        $this_month = Learner::where("org_no", Auth::guard('organization')->user()->org_id)->whereMonth('created_at', Carbon::now()->month)->count()
+            +
+            Instructor::where("org_no", Auth::guard('organization')->user()->org_id)->whereMonth('created_at', Carbon::now()->month)->count();
 
         $x = $this_month;
         $y = $count_total;
 
         try {
-            $percent = $x/$y;
-            $data['percent_age']= number_format( $percent * 100);
+            $percent = $x / $y;
+            $data['percent_age'] = number_format($percent * 100);
         } catch (\Throwable $th) {
-            $data['percent_age']= 0;
+            $data['percent_age'] = 0;
         }
 
 
@@ -292,10 +292,8 @@ class Organization extends Controller
 
         $header = null;
         $data = array();
-        if (($handle = fopen($filename, 'r')) !== false)
-        {
-            while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
-            {
+        if (($handle = fopen($filename, 'r')) !== false) {
+            while (($row = fgetcsv($handle, 1000, $delimiter)) !== false) {
                 if (!$header)
                     $header = $row;
                 else
@@ -314,49 +312,46 @@ class Organization extends Controller
 
         try {
             $customerArr = $this->csvToArray($file);
-            $user_type=$request->type;
+            $user_type = $request->type;
 
 
 
-        if ($user_type=='learner') {
-        $data=[];
+            if ($user_type == 'learner') {
+                $data = [];
 
-            foreach ($customerArr as $key => $value) {
-                $data[$key]['learner_name'] = $value['first_name']." ".$value['last_name'];
-                $data[$key]['learner_email'] = $value['email'];
-                $data[$key]['learner_phone'] = $value['phone'];
-                $data[$key]['open_password'] = Str::random(6);
-                $data[$key]['password'] = $data[$key]['open_password'];
-                $data[$key]['org_no'] = Auth::guard('organization')->user()->org_id;
-                Learner::create($data[$key]);
+                foreach ($customerArr as $key => $value) {
+                    $data[$key]['learner_name'] = $value['first_name'] . " " . $value['last_name'];
+                    $data[$key]['learner_email'] = $value['email'];
+                    $data[$key]['learner_phone'] = $value['phone'];
+                    $data[$key]['open_password'] = Str::random(6);
+                    $data[$key]['password'] = $data[$key]['open_password'];
+                    $data[$key]['org_no'] = Auth::guard('organization')->user()->org_id;
+                    Learner::create($data[$key]);
+                }
             }
+            if ($user_type == 'instructor') {
+                $data = [];
 
-        }
-        if ($user_type=='instructor') {
-        $data=[];
-
-            foreach ($customerArr as $key => $value) {
-                $data[$key]['instr_name'] = $value['first_name']." ".$value['last_name'];
-                $data[$key]['instr_email'] = $value['email'];
-                $data[$key]['instr_phone'] = $value['phone'];
-                $data[$key]['open_password'] = Str::random(6);
-                $data[$key]['password'] = $data[$key]['open_password'];
-                $data[$key]['org_no'] = Auth::guard('organization')->user()->org_id;
-                Instructor::create($data[$key]);
+                foreach ($customerArr as $key => $value) {
+                    $data[$key]['instr_name'] = $value['first_name'] . " " . $value['last_name'];
+                    $data[$key]['instr_email'] = $value['email'];
+                    $data[$key]['instr_phone'] = $value['phone'];
+                    $data[$key]['open_password'] = Str::random(6);
+                    $data[$key]['password'] = $data[$key]['open_password'];
+                    $data[$key]['org_no'] = Auth::guard('organization')->user()->org_id;
+                    Instructor::create($data[$key]);
+                }
             }
-
+            return redirect()->route('organization_users')->with('message', 'Users Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('message', $th->getMessage());
         }
-        return redirect()->route('organization_users')->with('message', 'Users Added Successfully');
-
-    } catch (\Throwable $th) {
-        return redirect()->back()->with('message', $th->getMessage());
-    }
     }
 
 
     function processNewUser(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         // dd($request->input('type'));die();
         if ($request->input('type') == 'instructor') {
             $validated = $request->validate([
