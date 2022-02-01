@@ -21,7 +21,8 @@
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="email" name="email" class="form-control" autocomplete="off">
+                            <input autocomplete="false" type="email" name="email" class="form-control"
+                                autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="">Phone</label>
