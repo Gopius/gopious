@@ -90,7 +90,8 @@ class Organization extends Controller
     {
         $data['view'] = 'profile';
         $data['header'] = 'appearance';
-        $data['settings'] = 'active';
+        // $data['settings'] = 'active';
+        $data['profile'] = 'active';
         return view('organization.dashboard',  $data);
     }
     function updateProfile(Request $request)
