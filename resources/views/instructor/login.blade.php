@@ -69,8 +69,8 @@
 					<div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
 						<!--begin::Logo-->
 						<a href="#" class="text-center pt-2">
-							@if ( $setting->organization->org_long_icon_url !== null && $setting->organization->org_long_icon_url !== '')
-								<img src="{{ asset('storage/'.$setting->organization->org_long_icon_url) }}" class="max-h-75px" alt="" />
+							@if ( $setting->organization->org_long_icon_url !== null)
+								<img src="{{ asset('storage/'.$setting->organization->org_avatar_url) }}" class="max-h-75px" alt="" />
 							@else
 								<img src="{{ asset('assets/media/logos/primary-logo.png') }}" class="max-h-75px" alt="" />
 							@endif
@@ -89,6 +89,7 @@
 						       {{session()->get('message')}}
 						    </div>
 						@endif
+                        {{-- @dd($setting->organization) --}}
 						<!--end::Logo-->
 						<!--begin::Aside body-->
 						<div class="d-flex flex-column-fluid flex-column flex-center">
@@ -97,18 +98,18 @@
 								<!--begin::Form-->
 								<form class="form" method="POST" novalidate="novalidate" id="kt_login_signin_form">
 									@csrf
-									
+
 									<!--begin::Title-->
 									<div class="text-center pb-8">
 										<h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Sign In</h2>
-										<span class="text-muted font-weight-bold font-size-h4">In 
+										<span class="text-muted font-weight-bold font-size-h4">In
 										<a class="text-primary font-weight-bolder">{{$setting->organization->org_name}}</a></span>
 									</div>
 									<!--end::Title-->
 									<!--begin::Form group-->
-									
-									
-									
+
+
+
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Email</label>
 										<input maxlength="255" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="text" name="email" autocomplete="off" />
@@ -132,13 +133,13 @@
 								<!--end::Form-->
 							</div>
 							<!--end::Signin-->
-							
+
 							<!--begin::Forgot-->
 							<div class="login-form login-forgot pt-11">
 								<!--begin::Form-->
 								<form class="form" method="POST" action="{{ route('instructor_forgot_password') }}" novalidate="novalidate" id="kt_login_forgot_form">
 									@csrf
-									
+
 									<!--begin::Title-->
 									<div class="text-center pb-8">
 										<h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Forgotten Password ?</h2>
@@ -163,7 +164,7 @@
 						</div>
 						<!--end::Aside body-->
 						<!--begin: Aside footer for desktop-->
-						
+
 						<!--end: Aside footer for desktop-->
 					</div>
 					<!--end: Aside Container-->
