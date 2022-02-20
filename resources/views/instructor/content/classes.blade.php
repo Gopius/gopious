@@ -25,7 +25,7 @@
 												</div>
 												<div class="card-toolbar">
 													<a href="{{ route('instructor_class_create') }}"><button type="reset" class="btn btn-success mr-2">
-														Create A Class
+													<i class="fas fa-plus"></i>	Create A Class
 													</button></a>
 												</div>
 											</div>

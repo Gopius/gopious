@@ -39,9 +39,9 @@
 														<button type="submit" id="m_submit" class="btn btn-success mr-2">
 															Save Changes
 														</button>
-														{{-- <button type="reset" class="btn mr-2">
+														<button type="reset" class="btn mr-2">
 															Clear
-														</button> --}}
+														</button>
 													</div>
 												</div>
 												<!--end::Header-->
@@ -68,7 +68,7 @@
 														</div>
 														<div class="col-sm-6 float-left">
 															<div class="d-flex align-items-center">
-																<div class="image-input image-input-outline symbol " id="kt_user_avatar" style="background-image: url(assets/media/stock-600x400/img-70.jpg); width: 300px;height: 160px;">
+																<div class="image-input image-input-outline symbol " id="kt_user_avatar" style="background-image: url({{ asset('assets/media/stock-600x400/img-70.jpg') }}); width: 300px;height: 160px;">
 																	<div class="image-input-wrapper symbol " style=" width: 300px;height: 160px;background-position: center;"></div>
 																	<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
 																		<i class="fa fa-pen icon-sm text-muted"></i>

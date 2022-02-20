@@ -59,6 +59,9 @@
     display: none;
   }
 }
+
+
+
 	{{Auth::guard('instructor')->user()->organization->setting->css}}
 </style>
 @isset ($header)

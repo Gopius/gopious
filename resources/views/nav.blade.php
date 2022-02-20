@@ -5,7 +5,7 @@
 		<title>Start</title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		
+
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -32,7 +32,7 @@
 				<div class="container d-flex flex-row-fluid flex-column justify-content-md-center p-12">
 					<h1 class="error-title font-weight-boldest text-info mt-10 mt-md-0 mb-12">Start</h1>
 					<a href="{{ route('login') }}" class="font-weight-boldest display-4">Entry Point, click to begin</a>
-					
+
 				</div>
 				<!--end::Content-->
 			</div>

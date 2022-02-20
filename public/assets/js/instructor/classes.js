@@ -82,25 +82,27 @@ var KTDatatableDataLocalDemo = function() {
                 //         </a>
                 //     `
                 // },
-            }, {
-                field: 'class.cat_max_student',
-                title: 'Max number of Student',
-                // template: (row)=> {
-                //     return `
-                //         <a
-                //         data-toggle="modal" href="#updateInputModal"
-                //         data-type="text"
-                //         data-title="New Max Number of Student"
-                //         data-name="cat_max_student"
-                //         data-route="${row.update_route}"
-                //         >
-                //             ${row.class.cat_max_student}
-                //             <i class="fa fa-pen mx-2 fs-4"></i>
+                },
+                // {
+                // field: 'class.cat_max_student',
+                // title: 'Max number of Student',
+                // // template: (row)=> {
+                // //     return `
+                // //         <a
+                // //         data-toggle="modal" href="#updateInputModal"
+                // //         data-type="text"
+                // //         data-title="New Max Number of Student"
+                // //         data-name="cat_max_student"
+                // //         data-route="${row.update_route}"
+                // //         >
+                // //             ${row.class.cat_max_student}
+                // //             <i class="fa fa-pen mx-2 fs-4"></i>
 
-                //         </a>
-                //     `
+                // //         </a>
+                // //     `
+                // // },
                 // },
-            }, {
+                {
                 field: 'class.cat_code',
                 title: 'Class Code',
                 // template: (row)=> {

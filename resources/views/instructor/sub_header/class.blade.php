@@ -12,7 +12,15 @@
 														<a href="{{ route('instructor_classes') }}" class="menu-link">
 															<span class="menu-text">Classes</span>
 														</a>
+
 													</li>
+                                                    	<li class="menu-item" aria-haspopup="true">
+													<a href="{{ route('instructor_class_create') }}"><button type="reset" class="btn btn-success mr-2">
+													<i class="fas fa-plus"></i>	Create A Class
+													</button></a>
+
+													</li>
+
 													@isset ($class_title)
 													    <li class="menu-item menu-item-active" aria-haspopup="true">
 															<a href="" class="menu-link">
@@ -20,9 +28,9 @@
 															</a>
 														</li>
 													@endisset
-													
-													
-													
+
+
+
 												</ul>
 												<!--end::Nav-->
 											</div>
@@ -43,6 +51,5 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
-					
+
 					<!--end::Content-->
-					

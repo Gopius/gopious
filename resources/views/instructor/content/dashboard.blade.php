@@ -458,7 +458,7 @@
 																	<span class="comment_list" style="display: none;">
 																		@foreach ($post->comments->sortDesc() as $comment)
 																			<!--begin::Item-->
-																			<div class="d-flex py-5">
+																			<div class="d-flex py-5 toogle_comment">
 																				<!--begin::Symbol-->
 																				<div class="image-input image-input-outline " style="background-image: url('/assets/media/users/blank.png'); width: 40px; height: 40px;">
 																					@php
@@ -468,14 +468,20 @@
 																				</div>
 																				<!--end::Symbol-->
 																				<!--begin::Info-->
-																				<div class="d-flex flex-column flex-row-fluid">
+																				<div class="d-flex flex-column flex-row-fluid ">
 																					<!--begin::Info-->
 																					<div class="d-flex align-items-center flex-wrap">
 																						<a class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder pr-6">{{$comment->instructor->instr_name??$comment->learner->learner_name??''}}</a>
 																						<span class="text-muted font-weight-normal flex-grow-1 font-size-sm">{{$comment->created_at->diffForHumans()}}</span>
 
 																					</div>
-																					<span class="text-dark-75 font-size-sm font-weight-normal pt-1">{{$comment->content}}</span>
+																					<span class="text-dark-75 font-size-sm font-weight-normal pt-1">{{$comment->content}} &nbsp;
+
+                                                                                    <a href="" class="delete float-right"><i class="fas fa-trash" style="color: red; margin-left:15px"></i></a>&nbsp;
+                                                                                    <a href="" class="edit float-right"><i class="fas fa-pen " style="color: #1bc5bd;"></i></a>
+
+                                                                                    </span>
+
 																					<!--end::Info-->
 																				</div>
 																				<!--end::Info-->
@@ -732,4 +738,7 @@
 					</div>
 					<script type="text/javascript">
 						var user_img_path = '{{ asset('storage/'.Auth::guard('instructor')->user()->instr_avatar_url) }}';
+                        $(document).ready(function(){
+
+                        });
 					</script>

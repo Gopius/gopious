@@ -26,13 +26,13 @@
 
 																</div>
 															</div>
-                                                            <form method="POST" enctype="multipart/form-data" action="{{ route('update_instructor_class', ['class'=>$class->cat_id]) }}">
+                                                            {{-- <form method="POST" enctype="multipart/form-data" action="{{ route('update_instructor_class', ['class'=>$class->cat_id]) }}">
                                                                 @csrf
                                                                 <div class="row">
                                                                     <input name="cat_cover_image" type="file" accept="image/*" class="form-control col-sm-8" required title="change class image">
                                                                     <button class="btn btn-primary col-sm-4"><i class="fas fa-upload"></i>upload</button>
                                                                 </div>
-                                                            </form>
+                                                            </form> --}}
 															<!--end::Image-->
 															<!--begin::Title-->
 															<a  class="card-title font-weight-bolder text-dark-75 text-hover-primary font-size-h4 m-0 pt-7 pb-1">{{$class->cat_title}}</a>
@@ -203,16 +203,18 @@
 										</div>
 										<!--end::List Widget 17-->
 										<!--begin::List Widget 9-->
+                                        <?php /* ?>
+
 										<div class="card card-custom gutter-b">
 											<!--begin::Header-->
-											<div class="card-header border-0 pt-5">
+											{{-- <div class="card-header border-0 pt-5">
 												<h3 class="card-title align-items-start flex-column">
 													<span class="card-label font-weight-bolder text-dark">Polls in Class</span>
 													<span class="text-muted mt-3 font-weight-bold font-size-sm">Total Polls
 													<span class="text-primary">{{count($polls)}}</span></span>
 												</h3>
 
-											</div>
+											</div> --}}
 											<!--end::Header-->
 											<!--begin::Body-->
 											<div class="card-body pt-2 pb-0 mt-3">
@@ -288,6 +290,8 @@
 											</div>
 											<!--end::Body-->
 										</div>
+                                        <?php */ ?>
+
 										<!--end: List Widget 9-->
 									</div>
 									<!--end::Aside-->
@@ -603,7 +607,7 @@
 					                                <div id="myCalendarWrapper"></div>
 					                            </div>
 
-
+                                                <?php /* ?>
 
 												<div class="card card-custom gutter-b">
 													<!--begin::Header-->
@@ -697,10 +701,14 @@
 													</div>
 													<!--end::Body-->
 												</div>
+                                                <?php  */?>
+
 
 												<!--end::List Widget 18-->
 
 												<!--begin::Base Table Widget 10-->
+                                                <?php /* ?>
+
 												<div class="card card-custom gutter-b">
 													<!--begin::Header-->
 													<div class="card-header border-0 pt-5">
@@ -794,6 +802,9 @@
 													</div>
 													<!--end::Body-->
 												</div>
+
+                                                <?php  */?>
+
 												<!--end::Base Table Widget 10-->
 												<!--begin::Forms Widget 7-->
 
