@@ -60,7 +60,7 @@
 																<!--end::Symbol-->
 																<!--begin::Text-->
 																<div class="d-flex flex-column flex-grow-1">
-																	<a  class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Total Users</a>
+																	<a  class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Total Learner</a>
 
 																</div>
 																<!--end::Text-->
@@ -221,7 +221,7 @@
 																</div>
 																<!--end::Symbol-->
 																<!--begin::Description-->
-																<span class="text-muted font-weight-bold font-size-lg">What’s on your mind, {{Auth::guard('instructor')->user()->instr_name}}?</span>
+																<span class="text-muted font-weight-bold font-size-lg">Please share your thoughts, {{Auth::guard('instructor')->user()->instr_name}}?</span>
 																<!--end::Description-->
 															</div>
 															<!--end::Top-->
@@ -510,7 +510,7 @@
 												</span>
 												{{ $posts->links('pagination.button') }}
 											</div>
-											<div class="col-xxl-4">
+											<div class="col-xxl-4 quize_card">
 												<!--begin::Base Table Widget 10-->
 												<div class="card card-custom gutter-b">
 													<!--begin::Header-->

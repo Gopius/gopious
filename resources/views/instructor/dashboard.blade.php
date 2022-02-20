@@ -54,6 +54,11 @@
 		    color: {{Auth::guard('instructor')->user()->organization->setting->color}} !important;
 		}
 	}
+    @media screen and (max-width: 480px) {
+  .quize_card {
+    display: none;
+  }
+}
 	{{Auth::guard('instructor')->user()->organization->setting->css}}
 </style>
 @isset ($header)
