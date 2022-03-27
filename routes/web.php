@@ -200,6 +200,7 @@ Route::group(['domain' => '{account}.' . $domain, 'middleware' => ['auth_domain'
             Route::get('/classes/create', [InstructorController::class, 'instructorClassCreate'])->name('instructor_class_create');
             Route::post('/classes/create', [InstructorController::class, 'processNewClass']);
             Route::post('/classes/update/{class}', [InstructorController::class, 'updateClass'])->name('instructor_class_update');
+            Route::get('/classes/delete/{id}', [InstructorController::class, 'deleteClass'])->name('instructor_class_delete');
 
 
 
