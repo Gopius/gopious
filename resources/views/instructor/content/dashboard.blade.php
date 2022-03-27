@@ -221,7 +221,7 @@
 																</div>
 																<!--end::Symbol-->
 																<!--begin::Description-->
-																<span class="text-muted font-weight-bold font-size-lg">Please share your thoughts, {{Auth::guard('instructor')->user()->instr_name}}?</span>
+																<span class="text-muted font-weight-bold font-size-lg">&nbsp; Please share your thoughts, {{Auth::guard('instructor')->user()->instr_name}}?</span>
 																<!--end::Description-->
 															</div>
 															<!--end::Top-->

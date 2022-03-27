@@ -180,6 +180,7 @@ var KTDatatableDataLocalDemo = function() {
                             data-route="${row.update_route}"
                             >
                                 <i class="fa fa-edit mx-2 fs-4"></i>
+                                <i class="fa fa-trash mx-2 fs-4"></i>
 
                             </a>
                         `;

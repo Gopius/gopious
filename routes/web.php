@@ -54,7 +54,7 @@ Route::group(['domain' => 'admin.' . $domain, 'as' => 'admin.'], function () {
     Route::get('/reset-password/{token}', [Admin::class, 'resetPassword'])->name('reset_password');
     Route::post('/reset-password/{token}', [Admin::class, 'processResetPassword']);
 });
-Route::group(['domain' => 'app.' . $domain, 'prefix' => 'organization',], function () {
+    Route::group(['domain' => 'app.' . $domain, 'prefix' => 'organization',], function () {
 
     Route::group(['middleware' => ['auth_organization_is_logged_in']], function () {
         Route::get('/', [LoginOrganization::class, 'index'])->name('login');
