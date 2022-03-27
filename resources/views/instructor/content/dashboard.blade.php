@@ -478,7 +478,7 @@
 																					<span class="text-dark-75 font-size-sm font-weight-normal pt-1">{{$comment->content}} &nbsp;
 
                                                                                     <a href="" class="delete float-right"><i class="fas fa-trash" style="color: red; margin-left:15px"></i></a>&nbsp;
-                                                                                    <a href="" class="edit float-right"><i class="fas fa-pen " style="color: #1bc5bd;"></i></a>
+                                                                                    <a href="" class="edit float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-pen " style="color: #1bc5bd;"></i></a>
 
                                                                                     </span>
 
@@ -736,6 +736,33 @@
 							</div>
 						<!--end::Entry-->
 					</div>
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="" method="POST">
+                                  @csrf
+                                  <input type="text" class="form-control" id="exampleFormControlInput1" >
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
 					<script type="text/javascript">
 						var user_img_path = '{{ asset('storage/'.Auth::guard('instructor')->user()->instr_avatar_url) }}';
                         $(document).ready(function(){
