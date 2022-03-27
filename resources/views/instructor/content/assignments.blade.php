@@ -25,22 +25,23 @@
 												</div>
 												<div class="card-toolbar">
 													<a href="{{ route('instructor_assignment_create') }}"><button type="reset" class="btn btn-success mr-2">
-														Create Assignment
+													<i class="fa fa-plus"></i>	Create Assignment
 													</button></a>
 												</div>
 
 											</div>
 											<!--end::Header-->
+                                            <div class="input-icon w-25 m-9">
+                                                <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
+                                                <span>
+                                                    <i class="flaticon2-search-1 text-muted"></i>
+                                                </span>
+                                            </div>
 											<!--begin::Form-->
 											<div class="card-body">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-4 my-2 my-md-0">
-                                                        <div class="input-icon">
-                                                            <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
-                                                            <span>
-                                                                <i class="flaticon2-search-1 text-muted"></i>
-                                                            </span>
-                                                        </div>
+
                                                     </div>
                                                 </div>
 												<div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
