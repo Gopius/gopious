@@ -54,6 +54,20 @@ class InstructorController extends Controller
         }
         return new JsonResponse($instructors->values());
     }
+    public function comment_edit(Request $request)   
+    {
+        CommentPost::find($request->comment_id)->update([
+            "content"=> $request->comment
+        ]);
+        return redirect()->back();
+    }
+
+    public function comment_delete($aa,$id)
+    {
+        CommentPost::find($id)->delete();
+        return redirect()->back();
+
+    }
 
     function updateInstructor(Request $request, Instructor $instructor)
     {
