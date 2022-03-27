@@ -70,6 +70,7 @@
 
 @isset ($view)
 	@include('instructor.content.'.$view)
+
 @endisset
 
 @include('instructor.footer')

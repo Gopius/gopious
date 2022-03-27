@@ -70,7 +70,7 @@
 																<!--end::Symbol-->
 																<!--begin::Text-->
 																<div class="d-flex flex-column flex-grow-1">
-																	<a  class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Total Students</a>
+																	<a  class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Total members</a>
 
 																</div>
 																<!--end::Text-->
@@ -317,7 +317,7 @@
 																</div>
 																<!--end::Symbol-->
 																<!--begin::Description-->
-																<span class="text-muted font-weight-bold font-size-lg">What’s on your mind, {{Auth::guard('instructor')->user()->instr_name}}?</span>
+																<span class="text-muted font-weight-bold font-size-lg">&nbsp; Please share your thoughts, {{Auth::guard('instructor')->user()->instr_name}}?</span>
 																<!--end::Description-->
 															</div>
 															<!--end::Top-->
@@ -561,7 +561,11 @@
 																						<span class="text-muted font-weight-normal flex-grow-1 font-size-sm">{{$comment->created_at->diffForHumans()}}</span>
 
 																					</div>
-																					<span class="text-dark-75 font-size-sm font-weight-normal pt-1">{{$comment->content}}</span>
+																					<span class="text-dark-75 font-size-sm font-weight-normal pt-1">{{$comment->content}}
+                                                                                        <a href="" class="delete float-right"><i class="fas fa-trash" style="color: red; margin-left:15px"></i></a>&nbsp;
+                                                                                        <a href="" class="edit float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-pen " style="color: #1bc5bd;"></i></a>
+
+                                                                                    </span>
 																					<!--end::Info-->
 																				</div>
 																				<!--end::Info-->
@@ -823,6 +827,31 @@
 						<!--end::Entry-->
 					</div>
 					<!--end::Content-->
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="" method="POST">
+                                  @csrf
+                                  <input type="text" class="form-control" id="exampleFormControlInput1" >
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
 					<script type="text/javascript">
 						var user_img_path = '{{ asset('storage/'.Auth::guard('instructor')->user()->instr_avatar_url) }}';
 					</script>
