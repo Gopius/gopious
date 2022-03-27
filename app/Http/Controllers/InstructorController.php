@@ -315,6 +315,12 @@ class InstructorController extends Controller
         $class->update($validated);
         return redirect()->back()->with('message', 'Updated Successfully');
     }
+
+    public function deleteClass($id,$id2)
+    {
+       $class = ClassInstructor::where('cat_no',$id2)->delete();
+        return redirect()->back()->with('message', 'Deleted Successfully');
+    }
     function instructorActivities(Request $request)
     {
         $data['view'] = 'courses';
