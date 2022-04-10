@@ -103,7 +103,7 @@ var KTDatatableDataLocalDemo = function() {
             }
             , {
                 field: 'alway_open',
-                title: 'Always Open',
+                title: 'Status',
                 template: (row)=> {
                     return `
                     <a
@@ -112,7 +112,15 @@ var KTDatatableDataLocalDemo = function() {
                         <span
                         class="alert alert-${row.alway_open?'success':'danger'}"
                         >
-                            ${row.alway_open?'always open':'not always open'}
+                    <a href="#">
+                        <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                        </label>
+
+                        </a>
+                        ${row.alway_open?'always open':'not always open'}
+
                         </span>
                     </a>
                     `
@@ -124,7 +132,8 @@ var KTDatatableDataLocalDemo = function() {
                 width: 125,
                 overflow: 'visible',
                 autoHide: true,
-                template: function(row) {
+                template: function (row) {
+
                     return '\
                             <a href="'+row.view_link+'" class="btn btn-sm btn-clean btn-icon mr-2" title="View Submissions">                            <i class="far fa-chart-bar"></i>                          </a>\
                             \
