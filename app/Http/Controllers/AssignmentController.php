@@ -219,9 +219,10 @@ class AssignmentController extends Controller
     {
         $assignments  = Assignment::where('instr_no', Auth::guard('instructor')->user()->instr_id)->orderBy('ass_id', 'DESC')->get();
         foreach ($assignments as $key => $assignment) {
+            // dd($assignment->course);
             $assignment['m_created'] = $assignment->created_at->diffForHumans();
             $assignment['m_end_date'] = $assignment->end_date->diffForHumans();
-            $assignment['m_submissions'] = $assignment->submissions->count();
+            $assignment['m_submissions'] = $assignment->submissions->count()."/";
             $assignment['class_title'] = $assignment->course->category->cat_title;
             $assignment['update_route'] = route('instructor_assignment_update', ['assignment' => $assignment->ass_id]);
             $assignment['view_link'] = route('instructor_assignment_submissions', [$assignment->course->category->cat_id, $assignment->ass_id]);
