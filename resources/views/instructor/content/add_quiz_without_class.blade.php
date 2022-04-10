@@ -50,7 +50,7 @@
 														   <span class="form-text text-muted">Please your Quiz Title</span>
 														</div>
 
-														{{-- <div class="form-group">
+														<div class="form-group">
 														   	<label>Choose Course:</label>
 														   	<select required type="text" class="form-control form-control-solid" name="course_no">
 														   		<option disabled="">--select a class --</option>
@@ -58,7 +58,7 @@
 														   			<option value="{{$course->course_id}}">{{$course->course_title}}</option>
 														   		@endforeach
 														   	</select>
-														</div> --}}
+														</div>
 
 														<div class="form-group">
 															<label for="exampleSelectd">Duration (mins)</label>
