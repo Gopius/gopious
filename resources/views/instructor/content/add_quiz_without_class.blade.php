@@ -12,7 +12,7 @@
 								<!--begin::Profile Account Information-->
 								<div class="d-flex flex-row">
 									<!--begin::Aside-->
-									
+
 									<!--end::Aside-->
 									<!--begin::Content-->
 									<div class="flex-row-fluid ml-lg-8">
@@ -24,7 +24,7 @@
 													<h3 class="card-label font-weight-bolder ">Add New Quiz</h3>
 													<span class="text-muted font-weight-bold font-size-sm mt-1">Enter Quiz details and fill other sections</span>
 												</div>
-												
+
 											</div>
 											<!--end::Header-->
 											<!--begin::Form-->
@@ -39,7 +39,7 @@
 											@endif
 											<form class="form" method="post" onsubmit=" return appendQuizs();">
 												@csrf
-												
+
 												<!--begin::Body-->
 												<div class="card-body">
 													<div class="col-sm-6 float-left pr-15">
@@ -50,7 +50,7 @@
 														   <span class="form-text text-muted">Please your Quiz Title</span>
 														</div>
 
-														<div class="form-group">
+														{{-- <div class="form-group">
 														   	<label>Choose Course:</label>
 														   	<select required type="text" class="form-control form-control-solid" name="course_no">
 														   		<option disabled="">--select a class --</option>
@@ -58,21 +58,21 @@
 														   			<option value="{{$course->course_id}}">{{$course->course_title}}</option>
 														   		@endforeach
 														   	</select>
-														</div>
+														</div> --}}
 
 														<div class="form-group">
 															<label for="exampleSelectd">Duration (mins)</label>
 															<input required type="number" name="duration" min="1" class="form-control form-control-solid"  />
 														</div>
 
-														
-														
-														
-														
+
+
+
+
 													</div>
-													
+
 													<div class="col-sm-6 float-left pl-15">
-														
+
 														<div class="form-group">
 														   <label>Class</label>
 														   <select class="form-control form-control-solid" required  name="cat_no" >
@@ -84,7 +84,7 @@
 														   <span class="form-text text-muted">Please Select A class</span>
 														</div>
 														<div class="form-group">
-															<label class="col-form-label">Always Open</label>
+															<label class="col-form-label">Synchronous</label>
 															<div class="col-12">
 															<span class="switch">
 															<label>
@@ -105,7 +105,7 @@
 																<input type="datetime-local" name="end_date" min="{{date('Y-m-d\TH:i')}}" class="form-control form-control-solid" placeholder ="Submission Deadline" />
 															</div>
 														</span>
-														
+
 													</div>
 													<div class="card-toolbar col-12 float-left mb-15">
 														<button type="Submit" class="btn btn-success mr-2">
@@ -115,11 +115,11 @@
 															Clear
 														</button>
 													</div>
-													
 
-													
-													
-													
+
+
+
+
 												</div>
 												<!--end::Body-->
 											</form>

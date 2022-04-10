@@ -18,14 +18,28 @@
 									<div class="flex-row-fluid ml-lg-8">
 										<!--begin::Card-->
 										<div class="card card-custom p-md-20">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="card-header py-3" style="border: 0;">
+                                                        <div class="card-title align-items-start flex-column">
+                                                            <h3 class="card-label font-weight-bolder ">Add New Assignment</h3>
+                                                            <span class="text-muted font-weight-bold font-size-sm mt-1">Enter assignment details and fill other sections</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="card-toolbar float-right">
+														<button type="Submit" class="btn btn-success mr-2">
+															Submit
+														</button>
+														<button type="reset" class="btn mr-2">
+															Clear
+														</button>
+													</div>
+                                                </div>
+                                            </div>
 											<!--begin::Header-->
-											<div class="card-header py-3" style="border: 0;">
-												<div class="card-title align-items-start flex-column">
-													<h3 class="card-label font-weight-bolder ">Add New Assignment</h3>
-													<span class="text-muted font-weight-bold font-size-sm mt-1">Enter assignment details and fill other sections</span>
-												</div>
 
-											</div>
 											<!--end::Header-->
 											<!--begin::Form-->
 											@if ($errors->any())
@@ -77,7 +91,7 @@
 														   </select>
 														   <span class="form-text text-muted">Please Select A class</span>
 														</div>
-														<div class="form-group">
+														{{-- <div class="form-group">
 														   	<label>Choose Course:</label>
 														   	<select required type="text" class="form-control form-control-solid" name="course_no">
 														   		<option disabled="">--select a class --</option>
@@ -85,7 +99,7 @@
 														   			<option value="{{$course->course_id}}">{{$course->course_title}}</option>
 														   		@endforeach
 														   	</select>
-														</div>
+														</div> --}}
 
 														<div class="form-group">
 															<label for="exampleSelectd">Submission Deadline</label>
@@ -93,14 +107,7 @@
 														</div>
 
 													</div>
-													<div class="card-toolbar col-12 float-left mb-15">
-														<button type="Submit" class="btn btn-success mr-2">
-															Submit
-														</button>
-														{{-- <button type="reset" class="btn mr-2">
-															Clear
-														</button> --}}
-													</div>
+
 
 
 

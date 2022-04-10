@@ -69,7 +69,8 @@
 @endisset
 
 @isset ($view)
-	@include('instructor.content.'.$view)
+
+	@include('instructor.content.' .$view)
 
 @endisset
 
