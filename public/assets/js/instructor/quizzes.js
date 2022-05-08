@@ -100,29 +100,18 @@ var KTDatatableDataLocalDemo = function() {
                 //         </a>
                 //     `
                 // },
-            }
-            , {
+            }, {
+
                 field: 'alway_open',
                 title: 'Status',
-                template: (row)=> {
+                template: (row) => {
                     return `
-                    <a
-                    href="${row.update_route}?alway_open=${row.alway_open?'0':'1'}"
-                    >
-                        <span
-                        class="alert alert-${row.alway_open?'success':'danger'}"
-                        >
-                    <a href="#">
-                        <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                        </label>
+            
+                    <a href="${row.update_route}?alway_open=${row.alway_open?'0':'1'}">
+                        <i class="${row.alway_open?'fas fa-toggle-on':'fas fa-toggle-off'} fa-2x"></i>
 
                         </a>
-                        ${row.alway_open?'always open':'not always open'}
-
-                        </span>
-                    </a>
+                  
                     `
                 },
             }, {
@@ -132,16 +121,16 @@ var KTDatatableDataLocalDemo = function() {
                 width: 125,
                 overflow: 'visible',
                 autoHide: true,
-                template: function (row) {
+                template: function(row) {
 
                     return '\
-                            <a href="'+row.view_link+'" class="btn btn-sm btn-clean btn-icon mr-2" title="View Submissions">                            <i class="far fa-chart-bar"></i>                          </a>\
+                            <a href="' + row.view_link + '" class="btn btn-sm btn-clean btn-icon mr-2" title="View Submissions">                            <i class="far fa-chart-bar"></i>                          </a>\
                             \
-                            <a onclick="deleteQuiz('+row.quiz_id+');" class="btn btn-sm btn-clean btn-icon mr-2">                                <i class="fa fa-trash"></i>                           </a>\
+                            <a onclick="deleteQuiz(' + row.quiz_id + ');" class="btn btn-sm btn-clean btn-icon mr-2">                                <i class="fa fa-trash"></i>                           </a>\
                             \
-                            <a href="'+row.view_route+'" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit Content">                            <i class="fa fa-pen-alt"></i>                          </a>\
+                            <a href="' + row.view_route + '" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit Content">                            <i class="fa fa-pen-alt"></i>                          </a>\
                             \
-                        '+
+                        ' +
                         `
                             <a
                             data-toggle="modal" href="#updateWholeForm"
@@ -184,32 +173,30 @@ jQuery(document).ready(function() {
 });
 
 
-var getAllOrganizationCourses = async ()=>{
+var getAllOrganizationCourses = async() => {
     await fetch('/instructor/quizzes-all')
-    .then((resp)=>resp.json())
-    .then((result)=>{
-        // console.log(result);
-        mNetSource = result;
-        KTDatatableDataLocalDemo.init();
-    });
+        .then((resp) => resp.json())
+        .then((result) => {
+            // console.log(result);
+            mNetSource = result;
+            KTDatatableDataLocalDemo.init();
+        });
 }
-var deleteQuiz = async (ass_id)=>{
-    if(!confirm('are you sure?')) return false;
+var deleteQuiz = async(ass_id) => {
+    if (!confirm('are you sure?')) return false;
     KTApp.blockPage({
-              overlayColor: 'red',
-              opacity: 0.1,
-              state: 'primary' // a bootstrap color
-            });
-    await fetch(window.location.href+'/delete/'+ass_id
-        )
-    .then((result)=>result.json())
-    .then((data)=>{
-        window.location.reload();
+        overlayColor: 'red',
+        opacity: 0.1,
+        state: 'primary' // a bootstrap color
+    });
+    await fetch(window.location.href + '/delete/' + ass_id)
+        .then((result) => result.json())
+        .then((data) => {
+            window.location.reload();
 
-    })
-    .catch((e)=>{
-        console.log(e);
-        alert(e);
-    })
-    ;
+        })
+        .catch((e) => {
+            console.log(e);
+            alert(e);
+        });
 }
