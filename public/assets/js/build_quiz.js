@@ -6,8 +6,8 @@ function addNewOption(value ="") {
     var optionsStr = `<div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
-                                    <label class="checkbox checkbox-inline m-0 p-0">
-                                        <input type="checkbox" name="m_option_radio" value="${optionsList.children.length}"/>
+                                    <label class="radio radio-inline m-0 p-0">
+                                        <input type="radio" name="m_option_radio" value="${optionsList.children.length}"/>
                                         <span></span>
                                     </label>
                                 </span>
@@ -26,7 +26,7 @@ function addNewOption(value ="") {
 }
 function addPossibleOption() {
     var optionsStr = `<div class="input-group">
-                            
+
                             <input type="text" name="m_option"  class="form-control" placeholder="Option" required/>
                             <div class="input-group-append" onclick="removeFillInOption(this)">
                                 <span class="input-group-text bg-danger">
@@ -41,13 +41,13 @@ function addPossibleOption() {
 }
 function removeOption(target) {
     optionsList.removeChild(target.parentElement.parentElement);
-    
-    
+
+
 }
 function removeFillInOption(target) {
     fillinPossibleOptionsList.removeChild(target.parentElement.parentElement);
-   
-    
+
+
 }
 
 var addMultiQuestion = ()=>{
@@ -65,7 +65,7 @@ var addMultiQuestion = ()=>{
         return;
     }
     var questionObject = {};
-    
+
     var mOptions = [];
     for(var option of optionsList.children){
         if(option.querySelector('input[name=m_option]').value == ''){
@@ -73,7 +73,7 @@ var addMultiQuestion = ()=>{
             return;
         }
         mOptions.push({
-                    'value':option.querySelector('input[name=m_option]').value, 
+                    'value':option.querySelector('input[name=m_option]').value,
                     'checked':option.querySelector('input[name=m_option_radio]').checked});
     }
     if (mOptions.length < 2) {
@@ -127,7 +127,7 @@ var addFillInQuestion = ()=>{
         return;
     }
     var questionObject = {};
-    
+
     var mOptions = [];
     for(var option of fillinPossibleOptionsList.children){
         if(option.querySelector('input[name=m_option]').value == ''){
@@ -135,7 +135,7 @@ var addFillInQuestion = ()=>{
             return;
         }
         mOptions.push({
-                    'value':option.querySelector('input[name=m_option]').value, 
+                    'value':option.querySelector('input[name=m_option]').value,
                     'checked':true,
                 });
     }
@@ -170,7 +170,7 @@ var addFillInQuestion = ()=>{
     questionsList.push(questionObject);
     renderTheFillInQuestion(questionObject);
     fillinPossibleOptionsList.innerHTML ='';
-    
+
     document.querySelector('.fill_in_textarea').value = '';
     document.querySelector('#close_modal').click()
 }
@@ -201,8 +201,8 @@ var addShortAnwserQuestion = ()=>{
         return;
     }
     var questionObject = {};
-    
-    
+
+
     questionObject['question'] = question;
     questionObject['type'] = 'short_answer';
     questionObject['options'] = [];
@@ -227,11 +227,11 @@ function addNewQuestion() {
             break;
         default :
     }
-    
-    
 
 
-   
+
+
+
 }
 var removeQuestion = (target)=>{
     var mindex = -1;
@@ -259,7 +259,7 @@ var renderQuestion =(questionObject)=>{
     }
     var questionStr = ` <div class="card-header">
                             <div class="card-title">
-                               
+
                             </div>
                             <div class="card-toolbar">
                                 <a class="btn btn-icon btn-sm btn-hover-light-primary" onclick="removeQuestion(this)">
@@ -281,7 +281,7 @@ var renderQuestion =(questionObject)=>{
 var renderTheFillInQuestion =(questionObject)=>{
     var n_option = '';
     for(var option of questionObject.options){
-        n_option += `<div class="row my-2">                        
+        n_option += `<div class="row my-2">
                         <p class="card-text col-8">${option.value} </p>
                         <i class="fas fa-check-circle h2 text-info"></i>
 
@@ -289,7 +289,7 @@ var renderTheFillInQuestion =(questionObject)=>{
     }
     var questionStr = ` <div class="card-header">
                             <div class="card-title">
-                               
+
                             </div>
                             <div class="card-toolbar">
                             <a class="btn btn-icon btn-sm btn-hover-light-primary" onclick="removeQuestion(this)">
@@ -309,10 +309,10 @@ var renderTheFillInQuestion =(questionObject)=>{
     questionsContainer.append(questionNode);
 }
 var renderShortAnswerQuestion =(questionObject)=>{
-    
+
     var questionStr = ` <div class="card-header">
                             <div class="card-title">
-                               
+
                             </div>
                             <div class="card-toolbar">
                                 <a class="btn btn-icon btn-sm btn-hover-light-primary" onclick="removeQuestion(this)">
@@ -324,7 +324,7 @@ var renderShortAnswerQuestion =(questionObject)=>{
                         </div>
                         <div class="card card-body">
                                 <div class="my-4"> ${questionObject.question} </div>
-                               
+
                             </div>`;
     var questionNode = document.createElement('div');
     questionNode.className = "card card-custom gutter-b draggable";
@@ -363,7 +363,7 @@ jQuery(document).ready(function () {
     });
 
     swappable.on('sortable:start', (event) => {
-            
+
     });
     swappable.on('sortable:stop', (event) => {
         swapElement(event.oldIndex, event.newIndex);
@@ -423,9 +423,9 @@ var uploadQuiz = ()=>{
                 }
             });
         }
-        
-    }); 
-    
+
+    });
+
 }
 
 var pushToBackEnd = async ()=>{
@@ -445,21 +445,21 @@ var pushToBackEnd = async ()=>{
             window.location.href = window.location.href+'../../..';
         }
         console.log(status);
-        
+
     })
     .catch((e)=>{
         console.log(e);
         alert(e);
     })
     ;
-    
+
 }
 
 var renderFillInQuestion = (e)=>{
     var input_field = `<input type="text" class="form-control d-inline" style="width:fit-content" >`;
     document.querySelector('.fill_in_textarea_output').innerHTML = e.target.value.replaceAll('__', input_field);
 }
- 
+
 
 var KTSummernoteDemo = function () {
  // Private functions

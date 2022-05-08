@@ -1,4 +1,4 @@
-		
+
 					<!--begin::Content-->
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -15,16 +15,16 @@
 										<button onclick="uploadQuiz()" class=" w-100 btn btn-primary mr-2 add_question" >
 											Submit Quiz
 										</button>
-		                                        
+
 									</div>
 								</div>
 								<!--begin::Profile Overview-->
 								<!--begin::Row-->
 								<div class="row">
 									<div class="col-lg-12 draggable-zone">
-										
+
 									</div>
-									
+
 								</div>
 								<!--end:: Row-->
 								<button type="button" class="btn btn-primary btn-lg  "   data-toggle="modal" data-target="#new_question_modal" > <i class="fas fa-plus-circle text-white"></i> Add A New Question</button>
@@ -46,6 +46,9 @@
 		                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		                                    <i aria-hidden="true" class="mdi mdi-close"></i>
 		                                </button>
+                                        <button  data-dismiss="modal" id="close_modal"> <i class="fa fa-solid fa-xmark"></i></button>
+
+
 		                            </div>
 		                            <div class="modal-body">
 		                            		<div class="form-group">
@@ -56,7 +59,7 @@
 													<option value="2">Fill in the Blanks</option>
 													<option value="3">Multiple Answers</option>
 													<option value="4">Short Answers</option>
-													
+
 												</select>
 											</div>
 		                                {{-- <form class="mt-4" action="" method="post"> --}}
@@ -75,7 +78,7 @@
 												</li>
 												<li class="nav-item">
 													<a class="nav-link" id="short_answer-tab" data-toggle="tab" href="#short_answer" aria-controls="contact">
-														
+
 														<span class="nav-text">Short Answer</span>
 													</a>
 												</li>
@@ -84,23 +87,23 @@
 
 	                                   			<div class="tab-pane fade active show" id="multi_choice" role="tabpanel" aria-labelledby="home-tab-2">
 	                                   				<div class="card-body p-0">
-		                                        
-		                                        
+
+
 				                                        <div class="form-group">
 				                                            <label for="exampleTextarea">Question</label>
 				                                            <div class="col-sm-12 p-0">
 																<!--begin::List Widget 14-->
 																<div class="card card-custom m-0 p-0">
 																 <!--begin::Form-->
-																 
+
 																  <div class="card-body col-12 m-0 p-0 mb-2">
 																   <div class="col-12">
 																    <div class="summernote" id="kt_summernote_1"></div>
 																    </div>
-																   
+
 																  </div>
-																  
-																
+
+
 																 <!--end::Form-->
 																</div>
 																<!--end::List Widget 14-->
@@ -109,14 +112,14 @@
 				                                        <div class="form-group" style="visibility: hidden;">
 														   <label>Multiple options selection</label>
 														   <input type="checkbox" disabled="" name="multi_options" class="form-control-solid">
-														  
+
 														</div>
 				                                        <label>Options</label>
 				                                        <label class="btn btn-primary float-right" onclick="addNewOption()" ><i class="fas fa-plus text-white"></i> Add Option</label>
 				                                        <div class="all-options">
-				                                            
+
 				                                        </div>
-				                                        
+
 				                                    </div>
 	                                   			</div>
 
@@ -130,7 +133,7 @@
 													<label>Possible answer</label>
 			                                        <label class="btn btn-primary float-right" onclick="addPossibleOption()" ><i class="fas fa-plus text-white"></i>  Add Possible Answer</label>
 			                                        <div class="all-fill_options">
-			                                            
+
 			                                        </div>
 
 	                                   			</div>
@@ -139,32 +142,31 @@
 	                                   				<div class="form-group">
 													   <label>Question</label>
 													   <textarea class="form-control form-control short_answer_textarea" rows="5"></textarea>
-													   
+
 													</div>
-													
+
 
 	                                   			</div>
 
 
-											    
+
 											</div>
-		                                    
-		                                    
+
+
 		                                    <div class="card-footer">
 		                                    	<div>
 		                                    		<div class="form-group w-50">
 													   <label>Question Score</label>
 													   <input type="number" name="score" required="" value="1" min="1" class="form-control">
-													  
+
 													</div>
 		                                    	</div>
 		                                        <button  onclick="addNewQuestion()" class="btn btn-primary mr-2 add_question" > <i class="fas fa-plus-circle text-white"></i>  Add Question</button>
 		                                        <button class="d-none" data-dismiss="modal" id="close_modal"></button>
-		                                        
+
 		                                    </div>
 		                                {{-- </form> --}}
 		                            </div>
 		                        </div>
 		                    </div>
 		            </div>
-					
