@@ -2,7 +2,8 @@ var questionsList = [];
 var optionsList = document.querySelector(".all-options");
 var fillinPossibleOptionsList = document.querySelector(".all-fill_options");
 var questionsContainer = document.querySelector(".draggable-zone");
-function addNewOption(value ="") {
+
+function addNewOption(value = "") {
     var optionsStr = `<div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -24,6 +25,7 @@ function addNewOption(value ="") {
     optionNode.innerHTML = optionsStr;
     optionsList.append(optionNode);
 }
+
 function addPossibleOption() {
     var optionsStr = `<div class="input-group">
 
@@ -39,20 +41,22 @@ function addPossibleOption() {
     optionNode.innerHTML = optionsStr;
     fillinPossibleOptionsList.append(optionNode);
 }
+
 function removeOption(target) {
     optionsList.removeChild(target.parentElement.parentElement);
 
 
 }
+
 function removeFillInOption(target) {
     fillinPossibleOptionsList.removeChild(target.parentElement.parentElement);
 
 
 }
 
-var addMultiQuestion = ()=>{
+var addMultiQuestion = () => {
     var question = $('.summernote').summernote('code');
-    if(question.length==0){
+    if (question.length == 0) {
         swal.fire({
             text: "No Question was asked",
             icon: "error",
@@ -67,14 +71,15 @@ var addMultiQuestion = ()=>{
     var questionObject = {};
 
     var mOptions = [];
-    for(var option of optionsList.children){
-        if(option.querySelector('input[name=m_option]').value == ''){
+    for (var option of optionsList.children) {
+        if (option.querySelector('input[name=m_option]').value == '') {
             option.querySelector('input[name=m_option]').focus();
             return;
         }
         mOptions.push({
-                    'value':option.querySelector('input[name=m_option]').value,
-                    'checked':option.querySelector('input[name=m_option_radio]').checked});
+            'value': option.querySelector('input[name=m_option]').value,
+            'checked': option.querySelector('input[name=m_option_radio]').checked
+        });
     }
     if (mOptions.length < 2) {
         swal.fire({
@@ -108,13 +113,13 @@ var addMultiQuestion = ()=>{
 
     questionsList.push(questionObject);
     renderQuestion(questionObject);
-    optionsList.innerHTML ='';
-    $('.summernote').summernote('code','');
+    optionsList.innerHTML = '';
+    $('.summernote').summernote('code', '');
     document.querySelector('#close_modal').click()
 }
-var addFillInQuestion = ()=>{
+var addFillInQuestion = () => {
     var question = document.querySelector('.fill_in_textarea').value;
-    if(question.length==0){
+    if (question.length == 0) {
         swal.fire({
             text: "No Question was asked",
             icon: "error",
@@ -129,15 +134,15 @@ var addFillInQuestion = ()=>{
     var questionObject = {};
 
     var mOptions = [];
-    for(var option of fillinPossibleOptionsList.children){
-        if(option.querySelector('input[name=m_option]').value == ''){
+    for (var option of fillinPossibleOptionsList.children) {
+        if (option.querySelector('input[name=m_option]').value == '') {
             option.querySelector('input[name=m_option]').focus();
             return;
         }
         mOptions.push({
-                    'value':option.querySelector('input[name=m_option]').value,
-                    'checked':true,
-                });
+            'value': option.querySelector('input[name=m_option]').value,
+            'checked': true,
+        });
     }
     if (mOptions.length == 0) {
         swal.fire({
@@ -169,14 +174,14 @@ var addFillInQuestion = ()=>{
     questionObject['score'] = document.querySelector('input[name=score]').value;
     questionsList.push(questionObject);
     renderTheFillInQuestion(questionObject);
-    fillinPossibleOptionsList.innerHTML ='';
+    fillinPossibleOptionsList.innerHTML = '';
 
     document.querySelector('.fill_in_textarea').value = '';
     document.querySelector('#close_modal').click()
 }
-var addShortAnwserQuestion = ()=>{
+var addShortAnwserQuestion = () => {
     var question = document.querySelector('.short_answer_textarea').value;
-    if(question.length==0){
+    if (question.length == 0) {
         swal.fire({
             text: "No Question was asked",
             icon: "error",
@@ -215,7 +220,7 @@ var addShortAnwserQuestion = ()=>{
 
 function addNewQuestion() {
     var m_option_list = document.querySelector('.m_option_list');
-    switch(m_option_list.querySelector('a.active').id){
+    switch (m_option_list.querySelector('a.active').id) {
         case 'multi_choice-tab':
             addMultiQuestion();
             break;
@@ -225,7 +230,7 @@ function addNewQuestion() {
         case 'short_answer-tab':
             addShortAnwserQuestion();
             break;
-        default :
+        default:
     }
 
 
@@ -233,25 +238,25 @@ function addNewQuestion() {
 
 
 }
-var removeQuestion = (target)=>{
+var removeQuestion = (target) => {
     var mindex = -1;
     mChildNode = target.parentElement.parentElement.parentElement;
     for (var i = 0; i < mChildNode.parentElement.children.length; i++) {
-        if(mChildNode.parentElement.children[i] == mChildNode){
+        if (mChildNode.parentElement.children[i] == mChildNode) {
             mindex = i;
             break;
         }
     }
-    if(mindex == -1) return;
-    questionsList.splice(mindex,1);
+    if (mindex == -1) return;
+    questionsList.splice(mindex, 1);
     mChildNode.parentElement.removeChild(mChildNode);
 
 
 }
-var renderQuestion =(questionObject)=>{
+var renderQuestion = (questionObject) => {
     var n_option = '';
-    for(var option of questionObject.options){
-        var checkedStr = option.checked ? '<i class="fas fa-check-circle h2 text-success"></i>':'<i class="flaticon-circle h2 text-danger"></i>';
+    for (var option of questionObject.options) {
+        var checkedStr = option.checked ? '<i class="fas fa-check-circle h2 text-success"></i>' : '<i class="flaticon-circle h2 text-danger"></i>';
         n_option += `<div class="row my-2">
                         ${checkedStr}
                         <p class="card-text col-8">${option.value} </p>
@@ -278,9 +283,9 @@ var renderQuestion =(questionObject)=>{
     questionNode.innerHTML = questionStr;
     questionsContainer.append(questionNode);
 }
-var renderTheFillInQuestion =(questionObject)=>{
+var renderTheFillInQuestion = (questionObject) => {
     var n_option = '';
-    for(var option of questionObject.options){
+    for (var option of questionObject.options) {
         n_option += `<div class="row my-2">
                         <p class="card-text col-8">${option.value} </p>
                         <i class="fas fa-check-circle h2 text-info"></i>
@@ -308,7 +313,7 @@ var renderTheFillInQuestion =(questionObject)=>{
     questionNode.innerHTML = questionStr;
     questionsContainer.append(questionNode);
 }
-var renderShortAnswerQuestion =(questionObject)=>{
+var renderShortAnswerQuestion = (questionObject) => {
 
     var questionStr = ` <div class="card-header">
                             <div class="card-title">
@@ -351,14 +356,14 @@ if (containers.length === 0) {
 
 var swappable = null;
 
-jQuery(document).ready(function () {
+jQuery(document).ready(function() {
     swappable = new Sortable.default(containers, {
         draggable: '.draggable',
         // announcements: {drag:start:(e)=>{console.log    }},
         handle: '.draggable .draggable-handle',
         mirror: {
-         appendTo: 'body',
-         constrainDimensions: true
+            appendTo: 'body',
+            constrainDimensions: true
         }
     });
 
@@ -373,14 +378,14 @@ jQuery(document).ready(function () {
     });
 });
 
-var swapElement = (oldIndex, newIndex)=>{
+var swapElement = (oldIndex, newIndex) => {
     var temp = questionsList[oldIndex]
     questionsList[oldIndex] = questionsList[newIndex];
     questionsList[newIndex] = temp;
 }
 
-var uploadQuiz = ()=>{
-    if(questionsList.length==0){
+var uploadQuiz = () => {
+    if (questionsList.length == 0) {
         swal.fire({
             text: "No Question has been added",
             icon: "error",
@@ -393,7 +398,7 @@ var uploadQuiz = ()=>{
         return;
     }
     swal.fire({
-        text: "Are you done building?",
+        text: "Are you done?",
         icon: "success",
         showCancelButton: true,
         buttonsStyling: false,
@@ -404,14 +409,14 @@ var uploadQuiz = ()=>{
             cancelButton: "btn font-weight-bold btn-default"
         }
 
-    }).then((result)=>{
+    }).then((result) => {
         if (result.value) {
             KTApp.blockPage({
-              overlayColor: 'red',
-              opacity: 0.1,
-              state: 'primary' // a bootstrap color
+                overlayColor: 'red',
+                opacity: 0.1,
+                state: 'primary' // a bootstrap color
             });
-            pushToBackEnd();// Submit form
+            pushToBackEnd(); // Submit form
         } else if (result.dismiss === 'cancel') {
             Swal.fire({
                 text: "Your Quiz has not been submitted!.",
@@ -428,68 +433,65 @@ var uploadQuiz = ()=>{
 
 }
 
-var pushToBackEnd = async ()=>{
-    await fetch(document.querySelector('input[name=_ulink]').value,
-                {
-                method: 'POST',
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({'questions': questionsList, '_token': document.querySelector('input[name=_token]').value})
-                }
-        )
-    .then((result)=>result.json())
-    .then((status)=>{
-        if (status) {
-            window.location.href = window.location.href+'../../..';
-        }
-        console.log(status);
+var pushToBackEnd = async() => {
+    await fetch(document.querySelector('input[name=_ulink]').value, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'questions': questionsList, '_token': document.querySelector('input[name=_token]').value })
+        })
+        .then((result) => result.json())
+        .then((status) => {
+            if (status) {
+                window.location.href = window.location.href + '../../..';
+            }
+            console.log(status);
 
-    })
-    .catch((e)=>{
-        console.log(e);
-        alert(e);
-    })
-    ;
+        })
+        .catch((e) => {
+            console.log(e);
+            alert(e);
+        });
 
 }
 
-var renderFillInQuestion = (e)=>{
+var renderFillInQuestion = (e) => {
     var input_field = `<input type="text" class="form-control d-inline" style="width:fit-content" >`;
     document.querySelector('.fill_in_textarea_output').innerHTML = e.target.value.replaceAll('__', input_field);
 }
 
 
-var KTSummernoteDemo = function () {
- // Private functions
- var demos = function () {
-  $('.summernote').summernote({
-   height: 150
-  });
- }
+var KTSummernoteDemo = function() {
+    // Private functions
+    var demos = function() {
+        $('.summernote').summernote({
+            height: 150
+        });
+    }
 
- return {
-  // public functions
-  init: function() {
-   demos();
-  }
- };
+    return {
+        // public functions
+        init: function() {
+            demos();
+        }
+    };
 }();
 
 // Initialization
 jQuery(document).ready(function() {
     // getChapterFromDB();
     KTSummernoteDemo.init();
-    $('.summernote').summernote('code','');
+    $('.summernote').summernote('code', '');
     document.querySelector('.fill_in_textarea').onkeyup = renderFillInQuestion;
 })
 
 var quiz_type = document.querySelector("#quiz_type");
 var allLinks = document.querySelectorAll("#myTab a");
-quiz_type.addEventListener('change', (e)=>{
+quiz_type.addEventListener('change', (e) => {
 
-    switch(parseInt(e.target.value)){
+    switch (parseInt(e.target.value)) {
         case 0:
             optionsList.innerHTML = "";
             document.querySelector('input[name=multi_options]').checked = false;
