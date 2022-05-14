@@ -264,6 +264,7 @@ class QuizController extends Controller
             $quiz['view_route'] = route('instructor_quiz_view', [$quiz->quiz_id]);
             $quiz['view_link'] = route('instructor_quiz_submissions', [$quiz->course->category->cat_id, $quiz->quiz_id]);
         }
+        // dd(response()->json($quizzes->toArray()));
         return response()->json($quizzes->toArray())->header('Content-Type', 'application/json');
     }
 
@@ -289,15 +290,19 @@ class QuizController extends Controller
     }
     function updateQuiz($account, Request $request, Quiz $quiz)
     {
+        // dd($request->all());
         $validated = $request->validate([
 
             'quiz_title' => 'max:255',
-            'start_date' => '',
             'alway_open' => '',
-            'end_date' => '',
             'created_at' => '',
             'duration' => '',
+            'course_no' => '',
         ]);
+        if (isset($request->type)) {
+            $validated['alway_open'] = $request->alway_open == 'on' ? 1 : 0;
+        }
+        // dd($validated);
         foreach ($validated as $key => $value) {
             if (!isset($value)) unset($validated[$key]);
         }

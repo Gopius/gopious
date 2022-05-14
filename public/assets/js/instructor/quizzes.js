@@ -134,6 +134,9 @@ var KTDatatableDataLocalDemo = function() {
                         `
                             <a
                             data-toggle="modal" href="#updateWholeForm"
+                            data-course_id="${row.course.course_id}"
+                            data-alway_open="${row.alway_open}"
+                            data-duration="${row.duration}"
                             data-title="${row.quiz_title}"
                             data-start_date="${row.m_start_date}"
                             data-end_date="${row.m_end_date}"
