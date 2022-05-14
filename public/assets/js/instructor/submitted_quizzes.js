@@ -6,7 +6,7 @@ var KTDatatableDataLocalDemo = function() {
 
     // demo initializer
     var demo = function() {
-        
+
 
         var datatable = $('#kt_datatable').KTDatatable({
             // datasource definition
@@ -48,16 +48,18 @@ var KTDatatableDataLocalDemo = function() {
             }, {
                 field: 'learner_name',
                 title: 'Student Name',
-            }, {
-                field: 'learner_phone',
-                title: 'Student Mobile',
-                template: function(row) {
-                    return '\
-                            <span">'+row.learner_phone+'</span>\
-                            \
-                        ';
                 },
-            }, {
+                // {
+                // field: 'learner_phone',
+                // title: 'Student Mobile',
+                // template: function(row) {
+                //     return '\
+                //             <span">'+row.learner_phone+'</span>\
+                //             \
+                //         ';
+                // },
+                // },
+                {
                 field: 'submission_date',
                 title: 'Submission Date'
             }, {
@@ -106,7 +108,7 @@ var KTDatatableDataLocalDemo = function() {
 }();
 
 jQuery(document).ready(function() {
-   
+
     getAllSubmittedAssignments();
 });
 
