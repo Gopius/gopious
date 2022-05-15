@@ -179,11 +179,15 @@ var KTDatatableDataLocalDemo = function() {
                             data-route="${row.update_route}"
                             >
                                 <i class="fa fa-edit mx-2 fs-4"></i>
-                               
+
 
                             </a>
                             <a href="instructor/classes/delete/${row.class.cat_id}">
                             <i class="fa fa-trash mx-2 fs-4"></i>
+                            </a>
+                            </a>
+                            <a href="instructor/classes/detail/${row.class.cat_id}">
+                            <i class="fa  fa-info-circle mx-2 fs-4"></i>
                             </a>
                         `;
                     },

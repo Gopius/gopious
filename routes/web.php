@@ -155,8 +155,8 @@ Route::group(['domain' => '{account}.' . $domain, 'middleware' => ['auth_domain'
                 Route::post('/upload_post', [InstructorController::class, 'instructorUploadClassPost'])->name('instructor_class_upload_post');
                 Route::post('/upload_post_comment', [InstructorController::class, 'instructorUploadClassPostComment'])->name('instructor_class_upload_post_comment');
                 Route::post('/upload_post_like', [InstructorController::class, 'instructorUploadClassPostLike'])->name('instructor_class_upload_post_like');
-                
-                
+
+
 
                 Route::get('/courses-add', [CourseController::class, 'newCourse'])->name('instructor_course_new');
                 Route::post('/courses-add', [CourseController::class, 'processNewCourse']);
@@ -205,6 +205,7 @@ Route::group(['domain' => '{account}.' . $domain, 'middleware' => ['auth_domain'
             Route::post('/classes/create', [InstructorController::class, 'processNewClass']);
             Route::post('/classes/update/{class}', [InstructorController::class, 'updateClass'])->name('instructor_class_update');
             Route::get('/classes/delete/{id}', [InstructorController::class, 'deleteClass'])->name('instructor_class_delete');
+            Route::get('/classes/detail/{id}', [InstructorController::class, 'classDetail'])->name('instructor_classDetail');
 
 
 
