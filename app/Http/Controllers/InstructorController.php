@@ -57,16 +57,15 @@ class InstructorController extends Controller
     public function comment_edit(Request $request)
     {
         CommentPost::find($request->comment_id)->update([
-            "content"=> $request->comment
+            "content" => $request->comment
         ]);
         return redirect()->back();
     }
 
-    public function comment_delete($aa,$id)
+    public function comment_delete($aa, $id)
     {
         CommentPost::find($id)->delete();
         return redirect()->back();
-
     }
 
     function updateInstructor(Request $request, Instructor $instructor)
@@ -331,26 +330,26 @@ class InstructorController extends Controller
         return redirect()->back()->with('message', 'Updated Successfully');
     }
 
-    public function deleteClass($id,$id2)
+    public function deleteClass($id, $id2)
     {
-       $class = ClassInstructor::where('cat_no',$id2)->delete();
+        $class = ClassInstructor::where('cat_no', $id2)->delete();
         return redirect()->back()->with('message', 'Deleted Successfully');
     }
 
-        public function classDetail($id2,$id)
-        {
-            $data['view'] = 'classDetail';
-            $data['header'] = 'learner';
-            $data['learner'] = 'active';
-            $classes  = ClassInstructor::where('cat_no',$id)->first();
-            dd($classes->class->quizzes);
-            foreach ($classes as $key => $class) {
-                // $class->class;
-                $class['m_route'] = route('instructor_class', $class->class->cat_id);
-                $class['update_route'] = route('instructor_class_update', [$class->class->cat_id]);
-            }
-            return view('instructor.content.classDetail',  $data);
-        }
+    public function classDetail($id2, $id)
+    {
+        $data['view'] = 'classDetail';
+        $data['header'] = 'class';
+        $data['learner'] = 'active';
+        $classes  = ClassInstructor::where('cat_no', $id)->first();
+        $data['class'] = $classes->class;
+        $data['quizzes'] = $classes->class->quizzes;
+        $data['assignments'] = $classes->instructor->assignments;
+        $data['polls'] = $classes->instructor->polls;
+        // dd($data);
+       
+        return view('instructor.content.classDetail',  $data);
+    }
 
     function instructorActivities(Request $request)
     {

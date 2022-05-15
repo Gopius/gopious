@@ -59,4 +59,14 @@ class Instructor extends Authenticatable
         // hasMany(RelatedModel, foreignKeyOnRelatedModel = admin_id, localKey = id)
         return $this->hasMany(VerificationToken::class, 'instr_no', 'instr_id');
     }
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class, 'instr_no', 'instr_id');
+    }
+
+    public function polls()
+    {
+        return $this->hasMany(Poll::class, 'instr_no', 'instr_id');
+    }
 }
