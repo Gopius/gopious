@@ -36,6 +36,15 @@ use Illuminate\Support\Str;
 
 class InstructorController extends Controller
 {
+    public function instructor_profile()
+    {
+        $data['view'] = 'profile';
+        $data['header'] = 'appearance';
+        // $data['settings'] = 'active';
+        $data['profile'] = 'active';
+        return view('organization.dashboard',  $data);
+    }
+
     function instructor(Request $request)
     {
         $data['view'] = 'instructors';
@@ -157,7 +166,7 @@ class InstructorController extends Controller
 
 
 
-    function instructorDashboard()
+    function instructor_profileinstructorDashboard()
     {
         $data['dashboard'] = 'active';
         $data['header'] = 'home';

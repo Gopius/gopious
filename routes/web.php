@@ -141,6 +141,7 @@ Route::group(['domain' => '{account}.' . $domain, 'middleware' => ['auth_domain'
             Route::post('/reset-password/{token}', [LoginInstructor::class, 'processResetPassword']);
         });
         Route::group(['middleware' => 'auth_instructor'], function () {
+            Route::get('/instructor_profile', [InstructorController::class, 'instructor_profile'])->name('instructor_profile');
             Route::get('/timeline', [InstructorController::class, 'instructorDashboard'])->name('instructor_dashboard');
             Route::get('/profile', [InstructorController::class, 'instructorProile'])->name('instructor_profile');
             Route::post('/profile', [InstructorController::class, 'updateInstructorProile']);
