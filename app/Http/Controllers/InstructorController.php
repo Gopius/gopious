@@ -166,7 +166,7 @@ class InstructorController extends Controller
 
 
 
-    function instructor_profileinstructorDashboard()
+    function instructorDashboard()
     {
         $data['dashboard'] = 'active';
         $data['header'] = 'home';
