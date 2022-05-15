@@ -54,7 +54,7 @@ class InstructorController extends Controller
         }
         return new JsonResponse($instructors->values());
     }
-    public function comment_edit(Request $request)   
+    public function comment_edit(Request $request)
     {
         CommentPost::find($request->comment_id)->update([
             "content"=> $request->comment
@@ -272,6 +272,7 @@ class InstructorController extends Controller
         $data['view'] = 'classes';
         $data['header'] = 'class';
         $data['class'] = 'active';
+        // dd($data);
         return view('instructor.dashboard',  $data);
     }
     function instructorClassCreate(Request $request)
@@ -335,6 +336,22 @@ class InstructorController extends Controller
        $class = ClassInstructor::where('cat_no',$id2)->delete();
         return redirect()->back()->with('message', 'Deleted Successfully');
     }
+
+        public function classDetail($id2,$id)
+        {
+            $data['view'] = 'classDetail';
+            $data['header'] = 'learner';
+            $data['learner'] = 'active';
+            $classes  = ClassInstructor::where('cat_no',$id)->first();
+            dd($classes->class->quizzes);
+            foreach ($classes as $key => $class) {
+                // $class->class;
+                $class['m_route'] = route('instructor_class', $class->class->cat_id);
+                $class['update_route'] = route('instructor_class_update', [$class->class->cat_id]);
+            }
+            return view('instructor.content.classDetail',  $data);
+        }
+
     function instructorActivities(Request $request)
     {
         $data['view'] = 'courses';
