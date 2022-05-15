@@ -448,6 +448,7 @@ class LearnerController extends Controller
         }
         // dd($quizzes);
         $data['quizzes'] = $quizzes;
+        // dd($data);
         return view('instructor.dashboard',  $data);
     }
     function allInstructorLearners()
