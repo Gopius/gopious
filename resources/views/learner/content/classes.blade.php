@@ -10,7 +10,7 @@
 								<!--begin::Profile Account Information-->
 								<div class="d-flex flex-row">
 									<!--begin::Aside-->
-									
+
 									<!--end::Aside-->
 									<!--begin::Content-->
 									<div class="flex-row-fluid ml-lg-8">
@@ -23,12 +23,12 @@
 													<span class="text-muted font-weight-bold font-size-sm mt-1">4 classes</span>
 												</div>
 												<div class="card-toolbar">
-													<button type="button" class="btn btn-primary" 
+													<button type="button" class="btn btn-primary"
 													data-toggle="modal" data-target="#joinclassmodal">
 														+ Join Class
 													</button>
 												</div>
-												
+
 											</div>
 											<!--end::Header-->
 											<!--begin::Form-->
@@ -63,14 +63,14 @@
 						                </button>
 						            </div>
 						            <div class="modal-body">
-						                
+
 						                	<div class="form-group">
 											    <label>Class Code <span class="text-danger">*</span></label>
 											    <input type="text" name="class_code" required class="form-control"  placeholder="Enter Class Code"/>
-										    
+
 										   </div>
-										   
-						                
+
+
 						            </div>
 						            <div class="modal-footer">
 						                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>

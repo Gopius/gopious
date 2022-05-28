@@ -6,7 +6,7 @@ var KTDatatableDataLocalDemo = function() {
 
     // demo initializer
     var demo = function() {
-        
+
 
         var datatable = $('#kt_datatable').KTDatatable({
             // datasource definition
@@ -53,14 +53,12 @@ var KTDatatableDataLocalDemo = function() {
             }, {
                 field: 'class.cat_max_student',
                 title: 'Max number of Student'
-            }, {
-                field: 'class.id',
-                title: 'View Timeline',
-                template: (row)=>`<a href="${row.m_route}"><span class="label font-weight-bold label-lg label-light-success label-inline"> Open Timeline </span></a>`,
-            },  {
+                },
+
+                {
                 field: 'class.cat_code',
                 title: 'Class Code'
-            },   {
+            },{
                 field: 'class.cat_status',
                 title: 'Status',
                 // callback function support for column rendering
@@ -72,7 +70,7 @@ var KTDatatableDataLocalDemo = function() {
                         },
                         1: {
                             'title': 'Open',
-                            'class': ' '
+                            'class': 'bg-success '
                         },
                         2: {
                             'title': 'Canceled',
@@ -94,10 +92,18 @@ var KTDatatableDataLocalDemo = function() {
                             'title': 'Warning',
                             'class': ' label-light-warning'
                         },
+
                     };
+
                     return '<span class="label font-weight-bold label-lg ' + status[row.class.cat_status].class + ' label-inline">' + status[row.class.cat_status].title + '</span>';
                 },
-            }],
+                },
+                {
+                    field: 'class.id',
+                    title: 'Action',
+                    template: (row)=>`<a href="${row.m_route}" > <i class="flaticon-eye" data-toggle="tooltip" data-placement="right" title="View Timeline" style="margin-left:30px"></i> </a>`,
+                    },
+            ],
         });
 
         $('#kt_datatable_search_status').on('change', function() {
@@ -121,7 +127,7 @@ var KTDatatableDataLocalDemo = function() {
 }();
 
 jQuery(document).ready(function() {
-   
+
     getAllOrganizationCourses();
 });
 

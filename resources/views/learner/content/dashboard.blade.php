@@ -128,7 +128,7 @@
 																</div>
 																<!--end::Symbol-->
 																<!--begin::Description-->
-																<span class="text-muted font-weight-bold font-size-lg">What’s on your mind, {{Auth::guard('learner')->user()->learner_name}}?</span>
+																<span class="text-muted font-weight-bold font-size-lg">Please share your thoughts, {{Auth::guard('learner')->user()->learner_name}}?</span>
 																<!--end::Description-->
 															</div>
 															<!--end::Top-->
@@ -178,12 +178,12 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
-																<div class="mt-10 attachment_list">
+																{{-- <div class="mt-10 attachment_list">
 																	<div class="row w-100">
 																		<input onchange="validateFile(this)" type="file" name="post_attachment[]" required  accept="image/*,video/*"  class="form-control col-sm-11">
 																		<i  onclick="removeAttachment(this)" class="la la-trash text-danger text-hover-primary icon-xl m-0 col-sm-1 btn"></i>
 																	</div>
-																</div>
+																</div> --}}
 																<!--end::Toolbar-->
 															{{-- </form> --}}
 															<!--end::Form-->
@@ -611,7 +611,7 @@
 												</div>
 												<!--end::Base Table Widget 2-->
 
-												<div class="card card-custom gutter-b">
+												{{-- <div class="card card-custom gutter-b">
 													<!--begin::Header-->
 													<div class="card-header border-0 pt-5">
 														<h3 class="card-title align-items-start flex-column">
@@ -697,7 +697,7 @@
 														</div>
 													</div>
 													<!--end::Body-->
-												</div>
+												</div> --}}
 
 												<!--end::List Widget 18-->
 											</div>

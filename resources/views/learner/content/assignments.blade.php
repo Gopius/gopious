@@ -57,7 +57,7 @@
 																<td class="pl-0">
 																	<a class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{$assignment->ass_title}}
 																	</a>
-																	
+
 																</td>
 																<td></td>
 																<td class="pl-0">
@@ -86,19 +86,19 @@
 																</td>
 															</tr>
 														@endforeach
-														
-														
-														
+
+
+
 													</tbody>
 													<!--end::Tbody-->
 												</table>
-												
+
 											</div>
 											<!--end::Table-->
 										</div>
 										<!--end::Tap pane-->
 										<!--begin::Tap pane-->
-										
+
 										<!--end::Tap pane-->
 									</div>
 								</div>

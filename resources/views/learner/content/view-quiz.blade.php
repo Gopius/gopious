@@ -33,7 +33,7 @@
 									</span>
 									<span class="text-primary d-block ml-5 timer"> {{$quiz->duration}}:00</span>
 									<div class="quiz-check-list text-center">
-										
+
 									</div>
 									<!--begin::Top-->
 									<div class="row">
@@ -52,15 +52,15 @@
 										</div>
 										<!--end::Symbol-->
 										<div class="col-sm-8 text-dark pr-20 mt-2" style="font-family: Poppins;font-size: 14px;line-height: 30px;letter-spacing: 0em; font-weight: 500;		">
-											<h1 class="text-dark-75 text-hover-primary mb-5 pl-0 font-size-lg font-weight-bolder" style="font-size: 18px;" id="question_panel">Welcome to {{$quiz->quiz_title}}</h1> 
+											<h1 class="text-dark-75 text-hover-primary mb-5 pl-0 font-size-lg font-weight-bolder" style="font-size: 18px;" id="question_panel">Welcome to {{$quiz->quiz_title}}</h1>
 
-											
+
 
 											<div class=" col-form-label" id="answer_panel">
 									            <span class="d-block text-muted"> click the Arrow to begin</span>
 									        </div>
-											
-											
+
+
 
 										</div>
 										<div class="col-sm-2 pt-20 text-right" >
@@ -76,21 +76,21 @@
 										</div>
 
 										<!--begin::Info-->
-										
+
 										<!--end::Info-->
-										
+
 									</div>
 									<div class="result_panel row">
-										
+
 									</div>
 									<div class="quiz-progress-bar">
-										
+
 									</div>
-									
+
 
 									<!--end::Top-->
-									
-									
+
+
 								</div>
 							</div>
 							<!--end::Education-->

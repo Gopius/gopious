@@ -3,7 +3,7 @@
 						<!--begin::Entry-->
 						<div class="container">
 							<!--begin::Education-->
-							<div class="card card-custom gutter-b col-lg-6 offset-lg-3">
+							<div class="card card-custom gutter-b col-lg-12 offset-lg-3" style="margin-left: 0 ;">
 								<!--begin::Header-->
 								<div class="card-header border-0 pt-5">
 									<h3 class="card-title align-items-start flex-column">
@@ -21,16 +21,16 @@
 										<div class="tab-pane fade show active" id="kt_tab_pane_10_2" role="tabpanel" aria-labelledby="kt_tab_pane_10_2">
 											<!--begin::Table-->
 											<div class="table-responsive">
-												<table class="table table-borderless table-vertical-center">
+												<table class="table table-vertical-center">
 													<!--begin::Thead-->
 													<thead>
 														<tr>
-															<th class="p-0 w-50px"></th>
-															<th class="p-0"></th>
-															
-															
-															<th class="p-0"></th>
-															<th class="p-0"></th>
+															<th class="p-0 w-50px text-center text-muted ">#</th>
+															<th class="p-0 w-250px text-muted " >Poll Title</th>
+
+
+															<th class="p-0 w-100px text-left text-muted">End Date</th>
+															<th class="p-0 text-right text-muted">Action</th>
 														</tr>
 													</thead>
 													<!--end::Thead-->
@@ -57,11 +57,12 @@
 																</td>
 																<td class="pl-0">
 																	<a class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{$poll->poll_title}}</a>
-																	
+
 																</td>
-																
-																
-																<td class="text-left">
+
+
+																<td class="
+                                                                ">
 																	<span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$poll->end_date->diffForHumans()}}</span>
 																	<span class="text-muted font-weight-bold d-block font-size-sm">Deadline</span>
 																</td>
@@ -82,19 +83,19 @@
 																</td>
 															</tr>
 														@endforeach
-														
-														
-														
+
+
+
 													</tbody>
 													<!--end::Tbody-->
 												</table>
-												
+
 											</div>
 											<!--end::Table-->
 										</div>
 										<!--end::Tap pane-->
 										<!--begin::Tap pane-->
-										
+
 										<!--end::Tap pane-->
 									</div>
 								</div>

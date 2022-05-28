@@ -13,6 +13,15 @@
 															<span class="menu-text">Classes</span>
 														</a>
 													</li>
+                                                    <li>
+
+                                                        <div class="card-toolbar">
+                                                            <button type="button" class="btn btn-primary"
+                                                            data-toggle="modal" data-target="#joinclassmodal" style="margin-top: 19px">
+                                                                + Join Class
+                                                            </button>
+                                                        </div>
+                                                    </li>
 													@isset ($class_title)
 													    <li class="menu-item menu-item-active" aria-haspopup="true">
 															<a href="" class="menu-link">
@@ -20,9 +29,9 @@
 															</a>
 														</li>
 													@endisset
-													
-													
-													
+
+
+
 												</ul>
 												<!--end::Nav-->
 											</div>
@@ -43,6 +52,5 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
-					
+
 					<!--end::Content-->
-					
