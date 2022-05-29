@@ -189,7 +189,7 @@ function QuizApp (_questions, prev, next,
             var newNode = document.createElement('div');
             newNode.classList.add("row");
             newNode.classList.add("my-2");
-            newNode.innerHTML = `<input type="${mQuestion.multiple_select == 1? 'checkbox':'radio'}" class="col-2 m-auto form-control form-control-sm" name="${mQuestion.quiz_question_id}" value="${option.quiz_option_id}">`;
+            newNode.innerHTML = `<input type="${mQuestion.multiple_select == 1? 'checkbox':'radio'}" class="col-2 m-auto form-control form-control-sm" style="height:20px !important;" name="${mQuestion.quiz_question_id}" value="${option.quiz_option_id}">`;
             newNode.innerHTML += `<p class="card-text col-10">${option.quiz_option_title} </p>`;
             this.answer_panel.append(newNode);
         }

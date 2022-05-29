@@ -179,7 +179,8 @@ class LearnerController extends Controller
                 $query->select('cat_no')
                     ->from(with(new ClassLearner)->getTable())
                     ->where('learner_no', Auth::guard('learner')->user()->learner_id);
-            })->get();
+
+            })->get()->sortByDesc('field');
         return view('learner.dashboard',  $data);
     }
 
