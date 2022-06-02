@@ -35,74 +35,75 @@ var KTDatatableDataLocalDemo = function() {
 
             // columns definition
             columns: [{
-                field: 'course_id',
-                title: '#',
-                sortable: false,
-                width: 20,
-                type: 'number',
-                selector: {
-                    class: ''
+                    field: 'course_id',
+                    title: '#',
+                    sortable: false,
+                    width: 20,
+                    type: 'number',
+                    selector: {
+                        class: ''
+                    },
+                    textAlign: 'center',
+                }, {
+                    field: 'class.cat_title',
+                    title: 'Class Title',
+                }, {
+                    field: 'class.cat_desc',
+                    title: 'Class Description'
                 },
-                textAlign: 'center',
-            }, {
-                field: 'class.cat_title',
-                title: 'Class Title',
-            }, {
-                field: 'class.cat_desc',
-                title: 'Class Description'
-            }, {
-                field: 'class.cat_max_student',
-                title: 'Max number of Student'
-                },
+                // {
+                //     field: 'class.cat_max_student',
+                //     title: 'Max number of Student'
+                // },
 
                 {
-                field: 'class.cat_code',
-                title: 'Class Code'
-            },{
-                field: 'class.cat_status',
-                title: 'Status',
-                // callback function support for column rendering
-                template: function(row) {
-                    var status = {
-                        0: {
-                            'title': 'Close',
-                            'class': ' label-light-danger'
-                        },
-                        1: {
-                            'title': 'Open',
-                            'class': 'bg-success '
-                        },
-                        2: {
-                            'title': 'Canceled',
-                            'class': ' label-light-primary'
-                        },
-                        3: {
-                            'title': 'Open',
-                            'class': ' label-light-success'
-                        },
-                        4: {
-                            'title': 'Info',
-                            'class': ' label-light-info'
-                        },
-                        5: {
-                            'title': 'Closed',
-                            'class': ' label-light-danger'
-                        },
-                        6: {
-                            'title': 'Warning',
-                            'class': ' label-light-warning'
-                        },
+                    field: 'class.cat_code',
+                    title: 'Class Code'
+                }, {
+                    field: 'class.cat_status',
+                    title: 'Status',
+                    // callback function support for column rendering
+                    template: function(row) {
+                        var status = {
+                            0: {
+                                'title': 'Close',
+                                'class': ' label-light-danger'
+                            },
+                            1: {
+                                'title': 'Open',
+                                'class': 'bg-success '
+                            },
+                            2: {
+                                'title': 'Canceled',
+                                'class': ' label-light-primary'
+                            },
+                            3: {
+                                'title': 'Open',
+                                'class': ' label-light-success'
+                            },
+                            4: {
+                                'title': 'Info',
+                                'class': ' label-light-info'
+                            },
+                            5: {
+                                'title': 'Closed',
+                                'class': ' label-light-danger'
+                            },
+                            6: {
+                                'title': 'Warning',
+                                'class': ' label-light-warning'
+                            },
 
-                    };
+                        };
 
-                    return '<span class="label font-weight-bold label-lg ' + status[row.class.cat_status].class + ' label-inline">' + status[row.class.cat_status].title + '</span>';
-                },
+                        return '<span class="label font-weight-bold label-lg ' + status[row.class.cat_status].class + ' label-inline">' + status[row.class.cat_status].title + '</span>';
+                    },
                 },
                 {
                     field: 'class.id',
                     title: 'Action',
-                    template: (row)=>`<a href="${row.m_route}" > <i class="flaticon-eye" data-toggle="tooltip" data-placement="right" title="View Timeline" style="margin-left:30px"></i> </a>`,
-                    },
+                    template: (row) => `<a href="${row.m_route}" > <i class="flaticon-eye" data-toggle="tooltip" data-placement="right" title="View Timeline" style="margin-left:30px"></i> </a>`,
+                },
             ],
         });
 
@@ -132,12 +133,12 @@ jQuery(document).ready(function() {
 });
 
 
-var getAllOrganizationCourses = async ()=>{
+var getAllOrganizationCourses = async() => {
     await fetch('/learner/classes-all')
-    .then((resp)=>resp.json())
-    .then((result)=>{
-        // console.log(result);
-        mNetSource = result;
-        KTDatatableDataLocalDemo.init();
-    });
+        .then((resp) => resp.json())
+        .then((result) => {
+            // console.log(result);
+            mNetSource = result;
+            KTDatatableDataLocalDemo.init();
+        });
 }
