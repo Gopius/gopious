@@ -179,7 +179,7 @@
 					</div>
 					<!--end::Title-->
 					<!--begin::Image-->
-					<div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center" style="background-image: url({{asset('assets/media/svg/illustrations/login-visual-3.svg')}});"></div>
+					<div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center" style="background-image: url({{asset('assets/media/svg/illustrations/login-visual-6.svg')}});"></div>
 					<!--end::Image-->
 				</div>
 				<!--end::Content-->

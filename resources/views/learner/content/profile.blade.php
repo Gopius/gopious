@@ -85,7 +85,7 @@
 															<div class="form-group row">
                                                                 <form method="post" class="row col-12"  enctype="multipart/form-data">
                                                                     @csrf
-                                                                    <span class="col-sm-12 col-form-label text-center">Upload Profile Picture</span>
+                                                                    <span class="col-sm-12 col-form-label text-right">Upload Profile Picture</span>
                                                                     <div class="col-lg-9 offset-lg-3 col-xl-6 offset-xl-6">
                                                                         <div class="image-input image-input-outline symbol symbol-circle" id="kt_user_avatar" >
                                                                             <div class="image-input-wrapper symbol symbol-circle " style="background-image: url({{ asset('storage/'.Auth::guard('learner')->user()->learner_avatar_url) }}),  url('/assets/media/users/blank.png'); background-position: center;"></div>

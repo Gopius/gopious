@@ -47,6 +47,16 @@ class CourseController extends Controller
         $data['class'] = $class;
         $data['class_title'] = $class->cat_title;
         // $data['instructors'] = ClassInstructor::where("cat_no", Auth::guard('instructor')->user()->instr_id)->get();
+        $data['block_count'] = 0;
+        $data['block_count_viewed'] = 0;
+        // dd($course->chapters);
+        foreach ($course->chapters as  $chapter) {
+            $data['block_count'] += count($chapter->blocks);
+            foreach ($chapter->blocks as $block) {
+                $data['block_count_viewed'] += $block->blockLearner[0]->viewed ?? 0;
+            }
+        }
+        // dd($data);
         $data['course'] = $course;
         return view('learner.dashboard',  $data);
     }

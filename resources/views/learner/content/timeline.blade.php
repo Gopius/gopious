@@ -1065,7 +1065,7 @@
 																<div class="d-flex flex-column flex-grow-1">
 																	<span>
 																		<a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Akpan</a>
-																		sen a message to 
+																		send a message to
 																		<a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder"> Instructors </a>
 																		class
 																	</span>
@@ -2012,7 +2012,7 @@
 																					</a>
 																				</td>
 																			</tr>
-																			
+
 																		</tbody>
 																		<!--end::Tbody-->
 																	</table>
@@ -2026,8 +2026,8 @@
 												</div>
 												<!--end::Base Table Widget 10-->
 												<!--begin::Forms Widget 7-->
-												
-												
+
+
 
 												<!--begin::Base Table Widget 2-->
 												<div class="card card-custom gutter-b">
@@ -2042,7 +2042,7 @@
 																<li class="nav-item">
 																	<a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_2_1">Month</a>
 																</li>
-																
+
 																<li class="nav-item">
 																	<a class="nav-link py-2 px-4 active" data-toggle="tab" href="#kt_tab_pane_2_3">Year</a>
 																</li>
@@ -2054,7 +2054,7 @@
 													<div class="card-body pt-2 pb-0 mt-3">
 														<div class="tab-content mt-5" id="myTabTables2">
 															<!--begin::Tap pane-->
-															
+
 															<!--end::Tap pane-->
 															<!--begin::Tap pane-->
 															<div class="tab-pane fade" id="kt_tab_pane_2_1" role="tabpanel" aria-labelledby="kt_tab_m-0 p-0">
@@ -2128,7 +2128,7 @@
 																					    <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 																					</div>
 																				</td>
-																				
+
 																				<td class="text-right pr-0">
 																					<a href="#" class="btn btn-icon btn-light btn-sm">
 																						<span class="svg-icon svg-icon-md svg-icon-success">
@@ -2166,7 +2166,7 @@
 																					    <div class="progress-bar bg-primary" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 																					</div>
 																				</td>
-																				
+
 																				<td class="text-right pr-0">
 																					<a href="#" class="btn btn-icon btn-light btn-sm">
 																						<span class="svg-icon svg-icon-md svg-icon-success">
@@ -2257,7 +2257,7 @@
 																					</a>
 																				</td>
 																			</tr>
-																			
+
 																		</tbody>
 																	</table>
 																</div>
@@ -2299,7 +2299,7 @@
 																					    <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 																					</div>
 																				</td>
-																				
+
 																				<td class="text-right pr-0">
 																					<a href="#" class="btn btn-icon btn-light btn-sm">
 																						<span class="svg-icon svg-icon-md svg-icon-success">
@@ -2337,7 +2337,7 @@
 																					    <div class="progress-bar bg-primary" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 																					</div>
 																				</td>
-																				
+
 																				<td class="text-right pr-0">
 																					<a href="#" class="btn btn-icon btn-light btn-sm">
 																						<span class="svg-icon svg-icon-md svg-icon-success">
@@ -2476,9 +2476,9 @@
 													<!--end::Body-->
 												</div>
 												<!--end::Base Table Widget 2-->
-												
 
-												
+
+
 												<!--end::List Widget 18-->
 											</div>
 										</div>
@@ -2492,4 +2492,3 @@
 					</div>
 					<!--end::Content-->
 					<!--end::Content-->
-					

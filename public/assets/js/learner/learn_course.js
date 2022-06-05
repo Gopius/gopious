@@ -9,7 +9,7 @@ var handleTickFor = (target)=>{
     processTick(target);
 }
 jQuery(document).ready(function() {
-   
+
     // getAllOrganizationCourses();
 });
 
@@ -21,8 +21,8 @@ var processTick = async (block)=>{
         var mId = `#block_ckeckbox_${block}`;
         var el = document.querySelector(mId);
         el.checked = block_learner.viewed;
-        
+        window.location.reload();
         // console.log(result);
-       
+
     });
 }
