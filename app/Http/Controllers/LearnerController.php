@@ -343,12 +343,10 @@ class LearnerController extends Controller
         //     Learner::where('learner_id', $learner->learner_id)->update(['password' => Hash::make($request->new_password), 'open_password' => $request->new_password]);
         // }
         if ($request->cat_class) {
-            $cat = Category::where('cat_id', $request->cat_class)->first();
-            $cat_class = DB::table('classes_learners')->where('learner_no', $learner->learner_id)->first();
-            if ($cat_class == null) {
-                DB::table('classes_learners')->insert(['cat_no' => $cat->cat_id, 'learner_no' => $learner->learner_id]);
-            } else {
-                DB::table('classes_learners')->where('learner_no', $learner->learner_id)->update(['cat_no' => $cat->cat_id]);
+            DB::table('classes_learners')->where('learner_no', $learner->learner_id)->delete();
+            foreach ($request->cat_class as $key => $catClass)
+            {
+                DB::table('classes_learners')->insert(['cat_no' => $catClass, 'learner_no' => $learner->learner_id]);
             }
         }
         return redirect()->back()->with('message', 'Updated Successfully');
