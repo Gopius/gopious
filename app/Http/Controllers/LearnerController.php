@@ -180,7 +180,8 @@ class LearnerController extends Controller
                     ->from(with(new ClassLearner)->getTable())
                     ->where('learner_no', Auth::guard('learner')->user()->learner_id);
 
-            })->get()->sortByDesc('field');
+            })->latest('quizzes.created_at')->get();
+            // dd($data);
         return view('learner.dashboard',  $data);
     }
 

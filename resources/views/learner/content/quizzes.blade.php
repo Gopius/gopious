@@ -53,7 +53,6 @@
 																		<!--begin::Tbody-->
 																		<tbody>
 																			@foreach ($quizzes as $quiz)
-                                                                            {{-- @dd($quiz) --}}
 																				<tr style="border-bottom: silver solid 1px; ">
 																					{{-- <td class="m-0 p-0 text-muted">
 																						<div class="symbol symbol-25 symbol-light-info mr-2">
@@ -93,6 +92,8 @@
 																					</td>
 																					@php
 																						$status=$quiz->getSubmissionStatus(auth('learner')->id(),$quiz->quiz_id);
+																						$result=$quiz->getResult(auth('learner')->id(),$quiz->quiz_id);
+																						// dd($result);
 																					@endphp
                                                                                     <td class="pl-0">
 																						<span class="font-weight-bolder label label-xl label-light-{{ $status=="Submitted" ? 'success':'danger' }} label-inline px-3 py-5 min-w-45px mb-2">
@@ -104,11 +105,11 @@
 
 																					<td class=" pr-0">
 																						<a href="{{ route('learner_class_quiz', [$quiz->course->category->cat_id, $quiz->quiz_id]) }}" class="btn btn-primary font-weight-bolder font-size-sm py-3 px-10" >Start</a>
-																						<a style="cursor: pointer;"><i class="flaticon-eye" data-toggle="modal" data-target="#leanerModal"></i></a>
+																						<a style="cursor: pointer;"><i class="flaticon-eye" data-toggle="modal" data-target="#leanerModal{{ $quiz->quiz_id }}"></i></a>
 																					</td>
 																				</tr>
 
-                                                                                <div class="modal fade" id="leanerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                <div class="modal fade" id="leanerModal{{ $quiz->quiz_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                                     <div class="modal-dialog">
                                                                                       <div class="modal-content">
                                                                                         <div class="modal-header">
@@ -137,7 +138,8 @@
                                                                                                 <br>
                                                                                                 {{-- @dd($requirement) --}}
                                                                                                 <span
-                                                                                                class="text-muted mt-3 font-weight-bold font-size-sm">50
+                                                                                                class="text-muted mt-3 font-weight-bold font-size-sm">
+																								<label style="border-radius:0;" class="w-100 label label-lg label-light-success">{{ $result['correct_option'] }}% ({{ $result['unattented_option'] }} unattented) </label>
                                                                                                 </span>
                                                                                                 </h4>
 

@@ -77,4 +77,36 @@ class Quiz extends Model
             return "Submitted";
         }
     }
+
+    public function getResult($learner_id,$quiz_id)
+    {
+        $quiz['questions'] = LearnerQuizOption::leftJoin(
+            'quiz_questions',
+            'learner_quiz_options.quiz_question_no',
+            'quiz_questions.quiz_question_id'
+        )
+            ->where('learner_quiz_options.learner_no', $learner_id)
+            ->where('quiz_questions.quiz_no', $quiz_id)
+            ->get();
+        $quiz['correct_option'] = 0;
+        $quiz['unattented_option'] = 0;
+        foreach ($quiz['questions'] as $question) {
+            if ($question->type == 'short_answer') {
+                if ($question->status == 1) {
+                    $quiz['correct_option'] += 1;
+                }
+                if ($question->status == 0) {
+                    $quiz['unattented_option'] += 1;
+                }
+            }
+            foreach ($question->options as $option) {
+                if (isset($question->quiz_option_no) && $question->quiz_option_no == $option->quiz_option_id && $option->is_correct == 1) {
+                    $quiz['correct_option'] += 1;
+                }
+            }
+        }
+
+        return $quiz;
+
+    }
 }
