@@ -47,6 +47,21 @@
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-mobile-fixed header-bottom-enabled page-loading">
+
+
+
+
+@php
+    $quizes= App\Models\Quiz::get();
+    $assignment= App\Models\Assignment::get();
+    $courses= App\Models\Course::get();
+
+    $collection=collect($quizes);
+    $notifications=$collection->merge($assignment)->merge($courses)->sortBy('created_at');
+
+    // dd($notifications);
+@endphp
+
 		<!-- begin::User Panel-->
 		<div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
 			<!--begin::Header-->
@@ -255,7 +270,7 @@
 													<!--begin::Title-->
 													<h4 class="d-flex flex-center rounded-top">
 														<span class="text-white">User Notifications</span>
-														<span class="btn btn-text btn-success btn-sm font-weight-bold btn-font-md ml-2">0 new</span>
+														<span class="btn btn-text btn-success btn-sm font-weight-bold btn-font-md ml-2">{{$notifications->count()}} new</span>
 													</h4>
 													<!--end::Title-->
 													<!--begin::Tabs-->
@@ -266,9 +281,9 @@
 														<li class="nav-item">
 															<a class="nav-link" data-toggle="tab" href="#topbar_notifications_events">Events</a>
 														</li> --}}
-														<li class="nav-item">
+														{{-- <li class="nav-item">
 															<a class="nav-link" data-toggle="tab" href="#topbar_notifications_logs">Logs</a>
-														</li>
+														</li> --}}
 													</ul>
 													<!--end::Tabs-->
 												</div>
@@ -276,10 +291,14 @@
 												<!--begin::Content-->
 												<div class="tab-content">
 													<!--begin::Tabpane-->
-													{{-- <div class="tab-pane active show p-8" id="topbar_notifications_notifications" role="tabpanel">
+													<div class="tab-pane active show p-8" id="topbar_notifications_notifications" role="tabpanel">
 														<!--begin::Scroll-->
 														<div class="scroll pr-7 mr-n7" data-scroll="true" data-height="300" data-mobile-height="200">
 															<!--begin::Item-->
+                                                            @foreach ($notifications as $notification)
+
+                                                            @if (isset($notification->course_title))
+
 															<div class="d-flex align-items-center mb-6">
 																<!--begin::Symbol-->
 																<div class="symbol symbol-40 symbol-light-primary mr-5">
@@ -300,13 +319,14 @@
 																<!--end::Symbol-->
 																<!--begin::Text-->
 																<div class="d-flex flex-column font-weight-bold">
-																	<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Cool App</a>
-																	<span class="text-muted">Marketing campaign planning</span>
+																	<a class="text-dark text-hover-primary mb-1 font-size-lg">New Course Alert</a>
+																	<span class="text-muted">{{$notification->course_title}}</span>
 																</div>
 																<!--end::Text-->
 															</div>
-															<!--end::Item-->
-															<!--begin::Item-->
+                                                            @endif
+                                                             @if (isset($notification->quiz_title))
+
 															<div class="d-flex align-items-center mb-6">
 																<!--begin::Symbol-->
 																<div class="symbol symbol-40 symbol-light-warning mr-5">
@@ -327,124 +347,15 @@
 																<!--end::Symbol-->
 																<!--begin::Text-->
 																<div class="d-flex flex-column font-weight-bold">
-																	<a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg">Awesome SAAS</a>
-																	<span class="text-muted">Project status update meeting</span>
+																	<a  class="text-dark-75 text-hover-primary mb-1 font-size-lg">New Quiz Alert</a>
+                                                                    <span class="text-muted">{{$notification->quiz_title}}</span>
+
 																</div>
 																<!--end::Text-->
 															</div>
-															<!--end::Item-->
-															<!--begin::Item-->
-															<div class="d-flex align-items-center mb-6">
-																<!--begin::Symbol-->
-																<div class="symbol symbol-40 symbol-light-success mr-5">
-																	<span class="symbol-label">
-																		<span class="svg-icon svg-icon-lg svg-icon-success">
-																			<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group-chat.svg-->
-																			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																					<rect x="0" y="0" width="24" height="24" />
-																					<path d="M16,15.6315789 L16,12 C16,10.3431458 14.6568542,9 13,9 L6.16183229,9 L6.16183229,5.52631579 C6.16183229,4.13107011 7.29290239,3 8.68814808,3 L20.4776218,3 C21.8728674,3 23.0039375,4.13107011 23.0039375,5.52631579 L23.0039375,13.1052632 L23.0206157,17.786793 C23.0215995,18.0629336 22.7985408,18.2875874 22.5224001,18.2885711 C22.3891754,18.2890457 22.2612702,18.2363324 22.1670655,18.1421277 L19.6565168,15.6315789 L16,15.6315789 Z" fill="#000000" />
-																					<path d="M1.98505595,18 L1.98505595,13 C1.98505595,11.8954305 2.88048645,11 3.98505595,11 L11.9850559,11 C13.0896254,11 13.9850559,11.8954305 13.9850559,13 L13.9850559,18 C13.9850559,19.1045695 13.0896254,20 11.9850559,20 L4.10078614,20 L2.85693427,21.1905292 C2.65744295,21.3814685 2.34093638,21.3745358 2.14999706,21.1750444 C2.06092565,21.0819836 2.01120804,20.958136 2.01120804,20.8293182 L2.01120804,18.32426 C1.99400175,18.2187196 1.98505595,18.1104045 1.98505595,18 Z M6.5,14 C6.22385763,14 6,14.2238576 6,14.5 C6,14.7761424 6.22385763,15 6.5,15 L11.5,15 C11.7761424,15 12,14.7761424 12,14.5 C12,14.2238576 11.7761424,14 11.5,14 L6.5,14 Z M9.5,16 C9.22385763,16 9,16.2238576 9,16.5 C9,16.7761424 9.22385763,17 9.5,17 L11.5,17 C11.7761424,17 12,16.7761424 12,16.5 C12,16.2238576 11.7761424,16 11.5,16 L9.5,16 Z" fill="#000000" opacity="0.3" />
-																				</g>
-																			</svg>
-																			<!--end::Svg Icon-->
-																		</span>
-																	</span>
-																</div>
-																<!--end::Symbol-->
-																<!--begin::Text-->
-																<div class="d-flex flex-column font-weight-bold">
-																	<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Claudy Sys</a>
-																	<span class="text-muted">Project Deployment &amp; Launch</span>
-																</div>
-																<!--end::Text-->
-															</div>
-															<!--end::Item-->
-															<!--begin::Item-->
-															<div class="d-flex align-items-center mb-6">
-																<!--begin::Symbol-->
-																<div class="symbol symbol-40 symbol-light-danger mr-5">
-																	<span class="symbol-label">
-																		<span class="svg-icon svg-icon-lg svg-icon-danger">
-																			<!--begin::Svg Icon | path:assets/media/svg/icons/General/Attachment2.svg-->
-																			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																					<rect x="0" y="0" width="24" height="24" />
-																					<path d="M11.7573593,15.2426407 L8.75735931,15.2426407 C8.20507456,15.2426407 7.75735931,15.6903559 7.75735931,16.2426407 C7.75735931,16.7949254 8.20507456,17.2426407 8.75735931,17.2426407 L11.7573593,17.2426407 L11.7573593,18.2426407 C11.7573593,19.3472102 10.8619288,20.2426407 9.75735931,20.2426407 L5.75735931,20.2426407 C4.65278981,20.2426407 3.75735931,19.3472102 3.75735931,18.2426407 L3.75735931,14.2426407 C3.75735931,13.1380712 4.65278981,12.2426407 5.75735931,12.2426407 L9.75735931,12.2426407 C10.8619288,12.2426407 11.7573593,13.1380712 11.7573593,14.2426407 L11.7573593,15.2426407 Z" fill="#000000" opacity="0.3" transform="translate(7.757359, 16.242641) rotate(-45.000000) translate(-7.757359, -16.242641)" />
-																					<path d="M12.2426407,8.75735931 L15.2426407,8.75735931 C15.7949254,8.75735931 16.2426407,8.30964406 16.2426407,7.75735931 C16.2426407,7.20507456 15.7949254,6.75735931 15.2426407,6.75735931 L12.2426407,6.75735931 L12.2426407,5.75735931 C12.2426407,4.65278981 13.1380712,3.75735931 14.2426407,3.75735931 L18.2426407,3.75735931 C19.3472102,3.75735931 20.2426407,4.65278981 20.2426407,5.75735931 L20.2426407,9.75735931 C20.2426407,10.8619288 19.3472102,11.7573593 18.2426407,11.7573593 L14.2426407,11.7573593 C13.1380712,11.7573593 12.2426407,10.8619288 12.2426407,9.75735931 L12.2426407,8.75735931 Z" fill="#000000" transform="translate(16.242641, 7.757359) rotate(-45.000000) translate(-16.242641, -7.757359)" />
-																					<path d="M5.89339828,3.42893219 C6.44568303,3.42893219 6.89339828,3.87664744 6.89339828,4.42893219 L6.89339828,6.42893219 C6.89339828,6.98121694 6.44568303,7.42893219 5.89339828,7.42893219 C5.34111353,7.42893219 4.89339828,6.98121694 4.89339828,6.42893219 L4.89339828,4.42893219 C4.89339828,3.87664744 5.34111353,3.42893219 5.89339828,3.42893219 Z M11.4289322,5.13603897 C11.8194565,5.52656326 11.8194565,6.15972824 11.4289322,6.55025253 L10.0147186,7.96446609 C9.62419433,8.35499039 8.99102936,8.35499039 8.60050506,7.96446609 C8.20998077,7.5739418 8.20998077,6.94077682 8.60050506,6.55025253 L10.0147186,5.13603897 C10.4052429,4.74551468 11.0384079,4.74551468 11.4289322,5.13603897 Z M0.600505063,5.13603897 C0.991029355,4.74551468 1.62419433,4.74551468 2.01471863,5.13603897 L3.42893219,6.55025253 C3.81945648,6.94077682 3.81945648,7.5739418 3.42893219,7.96446609 C3.0384079,8.35499039 2.40524292,8.35499039 2.01471863,7.96446609 L0.600505063,6.55025253 C0.209980772,6.15972824 0.209980772,5.52656326 0.600505063,5.13603897 Z" fill="#000000" opacity="0.3" transform="translate(6.014719, 5.843146) rotate(-45.000000) translate(-6.014719, -5.843146)" />
-																					<path d="M17.9142136,15.4497475 C18.4664983,15.4497475 18.9142136,15.8974627 18.9142136,16.4497475 L18.9142136,18.4497475 C18.9142136,19.0020322 18.4664983,19.4497475 17.9142136,19.4497475 C17.3619288,19.4497475 16.9142136,19.0020322 16.9142136,18.4497475 L16.9142136,16.4497475 C16.9142136,15.8974627 17.3619288,15.4497475 17.9142136,15.4497475 Z M23.4497475,17.1568542 C23.8402718,17.5473785 23.8402718,18.1805435 23.4497475,18.5710678 L22.0355339,19.9852814 C21.6450096,20.3758057 21.0118446,20.3758057 20.6213203,19.9852814 C20.2307961,19.5947571 20.2307961,18.9615921 20.6213203,18.5710678 L22.0355339,17.1568542 C22.4260582,16.76633 23.0592232,16.76633 23.4497475,17.1568542 Z M12.6213203,17.1568542 C13.0118446,16.76633 13.6450096,16.76633 14.0355339,17.1568542 L15.4497475,18.5710678 C15.8402718,18.9615921 15.8402718,19.5947571 15.4497475,19.9852814 C15.0592232,20.3758057 14.4260582,20.3758057 14.0355339,19.9852814 L12.6213203,18.5710678 C12.2307961,18.1805435 12.2307961,17.5473785 12.6213203,17.1568542 Z" fill="#000000" opacity="0.3" transform="translate(18.035534, 17.863961) scale(1, -1) rotate(45.000000) translate(-18.035534, -17.863961)" />
-																				</g>
-																			</svg>
-																			<!--end::Svg Icon-->
-																		</span>
-																	</span>
-																</div>
-																<!--end::Symbol-->
-																<!--begin::Text-->
-																<div class="d-flex flex-column font-weight-bold">
-																	<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Trilo Service</a>
-																	<span class="text-muted">Analytics &amp; Requirement Study</span>
-																</div>
-																<!--end::Text-->
-															</div>
-															<!--end::Item-->
-															<!--begin::Item-->
-															<div class="d-flex align-items-center mb-6">
-																<!--begin::Symbol-->
-																<div class="symbol symbol-40 symbol-light-info mr-5">
-																	<span class="symbol-label">
-																		<span class="svg-icon svg-icon-lg svg-icon-info">
-																			<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Shield-user.svg-->
-																			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																					<rect x="0" y="0" width="24" height="24" />
-																					<path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z" fill="#000000" opacity="0.3" />
-																					<path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z" fill="#000000" opacity="0.3" />
-																					<path d="M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 C14.5228466,17 11.463736,17 7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z" fill="#000000" opacity="0.3" />
-																				</g>
-																			</svg>
-																			<!--end::Svg Icon-->
-																		</span>
-																	</span>
-																</div>
-																<!--end::Symbol-->
-																<!--begin::Text-->
-																<div class="d-flex flex-column font-weight-bold">
-																	<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Bravia SAAS</a>
-																	<span class="text-muted">Reporting Application</span>
-																</div>
-																<!--end::Text-->
-															</div>
-															<!--end::Item-->
-															<!--begin::Item-->
-															<div class="d-flex align-items-center mb-6">
-																<!--begin::Symbol-->
-																<div class="symbol symbol-40 symbol-light-danger mr-5">
-																	<span class="symbol-label">
-																		<span class="svg-icon svg-icon-lg svg-icon-danger">
-																			<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-notification.svg-->
-																			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																					<rect x="0" y="0" width="24" height="24" />
-																					<path d="M21,12.0829584 C20.6747915,12.0283988 20.3407122,12 20,12 C16.6862915,12 14,14.6862915 14,18 C14,18.3407122 14.0283988,18.6747915 14.0829584,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,6 5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,12.0829584 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,7.83964668 C5.4908718,7.6432681 5.03602525,7.77972206 4.83964668,8.14442513 C4.6432681,8.5091282 4.77972206,8.96397475 5.14442513,9.16035332 L11.6444251,12.6603533 C11.8664074,12.7798822 12.1335926,12.7798822 12.3555749,12.6603533 L18.8555749,9.16035332 C19.2202779,8.96397475 19.3567319,8.5091282 19.1603533,8.14442513 C18.9639747,7.77972206 18.5091282,7.6432681 18.1444251,7.83964668 Z" fill="#000000" />
-																					<circle fill="#000000" opacity="0.3" cx="19.5" cy="17.5" r="2.5" />
-																				</g>
-																			</svg>
-																			<!--end::Svg Icon-->
-																		</span>
-																	</span>
-																</div>
-																<!--end::Symbol-->
-																<!--begin::Text-->
-																<div class="d-flex flex-column font-weight-bold">
-																	<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Express Wind</a>
-																	<span class="text-muted">Software Analytics &amp; Design</span>
-																</div>
-																<!--end::Text-->
-															</div>
-															<!--end::Item-->
-															<!--begin::Item-->
+                                                          @endif
+
+                                                            @if (isset($notification->ass_title))
 															<div class="d-flex align-items-center mb-6">
 																<!--begin::Symbol-->
 																<div class="symbol symbol-40 symbol-light-success mr-5">
@@ -465,18 +376,18 @@
 																<!--end::Symbol-->
 																<!--begin::Text-->
 																<div class="d-flex flex-column font-weight-bold">
-																	<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Bruk Fitness</a>
-																	<span class="text-muted">Web Design &amp; Development</span>
+																	<a class="text-dark text-hover-primary mb-1 font-size-lg">New assignment lert</a>
+                                                                    <span class="text-muted">{{$notification->ass_title}}</span>
 																</div>
 																<!--end::Text-->
 															</div>
-															<!--end::Item-->
+                                                            @endif
+                                                            @endforeach
 														</div>
-														<!--end::Scroll-->
-														<!--begin::Action-->
-														<div class="d-flex flex-center pt-7">
+
+														{{-- <div class="d-flex flex-center pt-7">
 															<a href="#" class="btn btn-light-primary font-weight-bold text-center">See All</a>
-														</div>
+														</div> --}}
 														<!--end::Action-->
 													</div>
 													<!--end::Tabpane-->
@@ -668,7 +579,7 @@
 															<!--end::Item-->
 														</div>
 														<!--end::Nav-->
-													</div> --}}
+													</div>
 													<!--end::Tabpane-->
 													<!--begin::Tabpane-->
 													<div class="tab-pane" id="topbar_notifications_logs" role="tabpanel">
