@@ -26,7 +26,7 @@
 																		<thead >
 																			<tr >
 
-																				<th class="p-0 w-50px text-muted">
+																				{{-- <th class="p-0 w-50px text-muted">
 																					<div class="symbol symbol-25 symbol-light-info mr-2">
 																						<span class="symbol-label">
 																							<span class="svg-icon text svg-icon-2x svg-icon-info">
@@ -36,7 +36,7 @@
 																							</span>
 																						</span>
 																					</div>
-																				</th>
+																				</th> --}}
 																				<th class="p-0 text-muted">Quiz Title</th>
 																				<th class="p-0 text-muted">Class Name</th>
 																				<th class="p-0 text-muted">Duration</th>
@@ -53,8 +53,9 @@
 																		<!--begin::Tbody-->
 																		<tbody>
 																			@foreach ($quizzes as $quiz)
+                                                                            {{-- @dd($quiz) --}}
 																				<tr style="border-bottom: silver solid 1px; ">
-																					<td class="m-0 p-0 text-muted">
+																					{{-- <td class="m-0 p-0 text-muted">
 																						<div class="symbol symbol-25 symbol-light-info mr-2">
 																							<span class="symbol-label">
 																								<span class="svg-icon text svg-icon-2x svg-icon-info">
@@ -64,9 +65,9 @@
 																								</span>
 																							</span>
 																						</div>
-																					</td>
+																					</td> --}}
 																					<td class="pl-0">
-																						<a href="#" class=" text-dark text-hover-primary mb-1 font-size-lg">{{$quiz->quiz_title}} Quiz
+																						<a  class=" text-dark text-hover-primary mb-1 font-size-lg">{{$quiz->quiz_title}} Quiz
 																						</a>
 
 																					</td>
@@ -103,9 +104,54 @@
 
 																					<td class=" pr-0">
 																						<a href="{{ route('learner_class_quiz', [$quiz->course->category->cat_id, $quiz->quiz_id]) }}" class="btn btn-primary font-weight-bolder font-size-sm py-3 px-10" >Start</a>
-																						<a ><i class="flaticon-eye"></i></a>
+																						<a style="cursor: pointer;"><i class="flaticon-eye" data-toggle="modal" data-target="#leanerModal"></i></a>
 																					</td>
 																				</tr>
+
+                                                                                <div class="modal fade" id="leanerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                    <div class="modal-dialog">
+                                                                                      <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                          <h5 class="modal-title" id="exampleModalLabel"> {{$quiz->quiz_title}} Quiz</h5>
+                                                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                          </button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+
+                                                                                            <div class="card-header border-0 pt-5">
+                                                                                                <h4 class="card-title align-items-start flex-column">
+                                                                                                <span class="card-label font-weight-bolder text-dark">Status</span>
+                                                                                                <br>
+                                                                                                {{-- @dd($requirement) --}}
+                                                                                                <span
+                                                                                                class="text-muted mt-3 font-weight-bold font-size-sm">{{$status}}
+                                                                                                </span>
+                                                                                                </h4>
+
+                                                                                                </div>
+
+                                                                                            <div class="card-header border-0 pt-5">
+                                                                                                <h4 class="card-title align-items-start flex-column">
+                                                                                                <span class="card-label font-weight-bolder text-dark">Score</span>
+                                                                                                <br>
+                                                                                                {{-- @dd($requirement) --}}
+                                                                                                <span
+                                                                                                class="text-muted mt-3 font-weight-bold font-size-sm">50
+                                                                                                </span>
+                                                                                                </h4>
+
+                                                                                                </div>
+
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                </div>
+
 																			@endforeach
 
 
@@ -129,3 +175,4 @@
 						<!--end::Entry-->
 					</div>
 					<!--end::Content-->
+
