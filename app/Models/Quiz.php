@@ -60,4 +60,21 @@ class Quiz extends Model
         // belongsTo(RelatedModel, foreignKey = instructor_id, keyOnRelatedModel = id)
         return $this->belongsTo(Instructor::class, 'instr_no', 'instr_id');
     }
+
+    public function getSubmissionStatus($learner_id,$quiz_id)
+    {
+        $quizzes  = LearnerQuizOption::leftJoin('quiz_questions', 'learner_quiz_options.quiz_question_no', '=', 'quiz_questions.quiz_question_id')
+        ->leftJoin('quizzes', 'quiz_questions.quiz_no', '=', 'quizzes.quiz_id')
+        ->leftJoin('learners', 'learner_quiz_options.learner_no', '=', 'learners.learner_id')
+        ->select('quizzes.quiz_id', 'learners.learner_id')
+        ->where('learners.learner_id', $learner_id)
+        ->where('quizzes.quiz_id', $quiz_id)
+        ->get();
+
+        if ($quizzes->isEmpty()) {
+            return "Not Submitted";
+        }else{
+            return "Submitted";
+        }
+    }
 }

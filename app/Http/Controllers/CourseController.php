@@ -33,6 +33,11 @@ class CourseController extends Controller
         $data['courses']  = Course::leftJoin('categories', 'courses.cat_no', '=', 'categories.cat_id')
             ->leftJoin('classes_learners', 'categories.cat_id', '=', 'classes_learners.cat_no')
             ->where('classes_learners.learner_no', Auth::guard('learner')->user()->learner_id)->get();
+            // dd($course);
+
+            $data['requirements']=Requirement::select('requirement_title', 'course_no')->where('course_no',$course->course_id)->get();
+            $data['outcome']=Outcome::select('outcome_title', 'course_no')->where('course_no',$course->course_id)->get();
+            dd($data);
         return view('learner.dashboard',  $data);
     }
     function learnerClassCourseLearn($account, Category $class, Course $course)

@@ -90,9 +90,12 @@
 
 
 																					</td>
+																					@php
+																						$status=$quiz->getSubmissionStatus(auth('learner')->id(),$quiz->quiz_id);
+																					@endphp
                                                                                     <td class="pl-0">
-																						<span class="font-weight-bolder label label-xl label-light-success label-inline px-3 py-5 min-w-45px mb-2">
-																							Submitted
+																						<span class="font-weight-bolder label label-xl label-light-{{ $status=="Submitted" ? 'success':'danger' }} label-inline px-3 py-5 min-w-45px mb-2">
+																							{{ $status }}
 																						</span>
 																					</td>
 
