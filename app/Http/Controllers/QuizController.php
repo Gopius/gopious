@@ -161,7 +161,6 @@ class QuizController extends Controller
     }
     function submissionStatus($account, Category $class, Quiz $quiz, LearnerQuizOption $learner_quiz_option, $status)
     {
-
         $learner_quiz_option->status = $status;
         $learner_quiz_option->save();
         return redirect()->back();
@@ -225,6 +224,7 @@ class QuizController extends Controller
     }
     function processBuiltQuiz($account, Request $request, Category $class, Quiz $quiz)
     {
+
         if ($quiz->instructor->instr_id != Auth::guard('instructor')->user()->instr_id) {
             return abort(401);
         }
@@ -261,7 +261,7 @@ class QuizController extends Controller
             $quiz['m_start_date'] = $quiz->start_date->diffForHumans();
             $quiz['m_end_date'] = $quiz->end_date->diffForHumans();
             $quiz['update_route'] = route('instructor_quiz_update', [$quiz->quiz_id]);
-            $quiz['view_route'] = route('instructor_quiz_view', [$quiz->quiz_id]);
+            $quiz['view_route'] = route('NewViewQuiz', [$quiz->quiz_id]);
             $quiz['view_link'] = route('instructor_quiz_submissions', [$quiz->course->category->cat_id, $quiz->quiz_id]);
         }
         // dd(response()->json($quizzes->toArray()));
