@@ -295,8 +295,7 @@
 														<!--begin::Scroll-->
 														<div class="scroll pr-7 mr-n7" data-scroll="true" data-height="300" data-mobile-height="200">
 															<!--begin::Item-->
-                                                            @foreach ($notifications as $notification)
-
+                                                         @foreach ($notifications as $notification)
                                                             @if (isset($notification->course_title))
 
 															<div class="d-flex align-items-center mb-6">
@@ -325,7 +324,7 @@
 																<!--end::Text-->
 															</div>
                                                             @endif
-                                                             @if (isset($notification->quiz_title))
+                                                        @if (isset($notification->quiz_title))
 
 															<div class="d-flex align-items-center mb-6">
 																<!--begin::Symbol-->
