@@ -18,7 +18,7 @@ class QuizControllerNew extends Controller
         // $course  = Course::findOrFail($course_id);
         // var_dump($course->course_title);die();
 
-        $data['view'] = 'new-view-quiz';
+        $data['view'] = 'view-quiz';
         $data['header'] = 'course';
         $data['quiz'] = 'active';
         $data['main_quiz'] = $quiz;

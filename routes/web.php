@@ -17,7 +17,9 @@ use App\Http\Controllers\PollController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\LoginLearnerController;
-use App\Http\Controllers\QuizControllerNew;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +54,7 @@ Route::group(['domain' => 'admin.' . $domain, 'as' => 'admin.'], function () {
     Route::get('/reset-password/{token}', [Admin::class, 'resetPassword'])->name('reset_password');
     Route::post('/reset-password/{token}', [Admin::class, 'processResetPassword']);
 });
-    Route::group(['domain' => 'app.' . $domain, 'prefix' => 'organization',], function () {
+Route::group(['domain' => 'app.' . $domain, 'prefix' => 'organization',], function () {
 
     Route::group(['middleware' => ['auth_organization_is_logged_in']], function () {
         Route::get('/', [LoginOrganization::class, 'index'])->name('login');
@@ -231,14 +233,8 @@ Route::group(['domain' => '{account}.' . $domain, 'middleware' => ['auth_domain'
             Route::get('/quizzes-all', [QuizController::class, 'allQuizzes']);
             Route::get('/quizzes/delete/{quiz}', [QuizController::class, 'deleteQuiz']);
             Route::any('/quizzes/update/{quiz}', [QuizController::class, 'updateQuiz'])->name('instructor_quiz_update');
-            // Route::get('/quizzes/view/{quiz}', [QuizController::class, 'viewQuiz'])->name('instructor_quiz_view');
-            // Route::post('/quizzes/view/{quiz}/new-question', [QuizController::class, 'newQuizQuestion'])->name('instructor_quiz_new_question');
-
-                // ------------------------New quiz Route --------------------------------
-
-            Route::get('/quizzes/view/{quiz}', [QuizControllerNew::class, 'NewViewQuiz'])->name('NewViewQuiz');
-            Route::post('/quizzes/view/{quiz}/new-question', [QuizController::class, 'NewQuizQuestion'])->name('add_instructor_quiz_new_question');
-
+            Route::get('/quizzes/view/{quiz}', [QuizController::class, 'viewQuiz'])->name('instructor_quiz_view');
+            Route::post('/quizzes/view/{quiz}/new-question', [QuizController::class, 'newQuizQuestion'])->name('instructor_quiz_new_question');
 
 
 

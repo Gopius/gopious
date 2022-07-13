@@ -70,9 +70,10 @@
 
 
         @php
-    $quizes= App\Models\Quiz::get();
-    $assignment= App\Models\Assignment::get();
-    $courses= App\Models\Course::get();
+	$instructors=auth('learner')->user()->organization->instructors->pluck('instr_id');
+    $quizes= App\Models\Quiz::whereIn('instr_no',$instructors)->get();
+    $assignment= App\Models\Assignment::whereIn('instr_no',$instructors)->get();
+    $courses= App\Models\Course::whereIn('instr_no',$instructors)->get();
 
     $collection=collect($quizes);
     $notifications=$collection->merge($assignment)->merge($courses)->sortBy('created_at');

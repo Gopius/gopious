@@ -70,9 +70,10 @@
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-mobile-fixed header-bottom-enabled page-loading">
         @php
-        $quizes= App\Models\Quiz::get();
-        $assignment= App\Models\Assignment::get();
-        $courses= App\Models\Course::get();
+		// dd(auth('instructor')->user());
+        $quizes= App\Models\Quiz::where('instr_no',auth('instructor')->id())->get();
+        $assignment= App\Models\Assignment::where('instr_no',auth('instructor')->id())->get();
+        $courses= App\Models\Course::where('instr_no',auth('instructor')->id())->get();
 
         $collection=collect($quizes);
         $notifications=$collection->merge($assignment)->merge($courses)->sortBy('created_at');
