@@ -23,11 +23,11 @@ class AuthOrganization
             session()->put('url.intended', url()->current());
             return redirect()->route('login');
         }
-        if (!Auth::guard('organization')->user()->approved) {
-            return redirect()->route('login')->withErrors([
-                'Account is not approved',
-            ]);
-        }
+        // if (!Auth::guard('organization')->user()->approved) {
+        //     return redirect()->route('login')->withErrors([
+        //         'Account is not approved',
+        //     ]);
+        // }
         if (session()->has('url.intended')) {
             return redirect(session()->pull('url.intended'))->with('message', 'Welcome back');
         }
