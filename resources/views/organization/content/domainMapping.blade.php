@@ -64,6 +64,20 @@
 																	
 																</div>
 															</div>
+															<div class="form-group mb-5">
+																<label>Instructor Domain Name</label>
+																<div class="input-group">
+																	<input disabled="" type="text" class="form-control" value="{{Auth::guard('organization')->user()->setting->domain_name??''}}.gopius.com/instructor">
+																	
+																</div>
+															</div>
+															<div class="form-group mb-5">
+																<label>Learner Domain Name</label>
+																<div class="input-group">
+																	<input disabled="" type="text" class="form-control" value="{{Auth::guard('organization')->user()->setting->domain_name??''}}.gopius.com/learner">
+																	
+																</div>
+															</div>
 															{{-- <p class="text-muted">Important:<br>
 																Once you enter a domain here, it will be used immediately. 
 																Still, you must create a proper CNAME DNS record on your own domain for the mapping to work. 

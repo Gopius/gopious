@@ -77,8 +77,8 @@ Route::group(['domain' => 'app.' . $domain, 'prefix' => 'organization',], functi
 
         Route::get('/profile', [Organization::class, 'profile'])->name('organization_user_profile');
         Route::post('/profile', [Organization::class, 'updateProfile']);
-        Route::get('/appearance', [Organization::class, 'appearance'])->name('organization_appearance');
-        Route::post('/appearance', [Organization::class, 'updateappearance']);
+        Route::get('/account', [Organization::class, 'appearance'])->name('organization_appearance');
+        Route::post('/account', [Organization::class, 'updateappearance']);
         Route::get('/customize', [Organization::class, 'customize'])->name('organization_customize');
         Route::post('/customize', [Organization::class, 'updateCustomize']);
         Route::get('/domain-mapping', [Organization::class, 'domainMapping'])->name('domainMapping');

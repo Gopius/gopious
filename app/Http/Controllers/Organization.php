@@ -153,7 +153,7 @@ class Organization extends Controller
 
 
 
-        return redirect()->route('organization_appearance');
+        return redirect()->route('organization_customize');
     }
 
     function customize(Request $request)
@@ -185,7 +185,7 @@ class Organization extends Controller
 
 
 
-        return redirect()->route('organization_customize');
+        return redirect()->route('domainMapping');
     }
 
     function domainMapping(Request $request)
@@ -245,6 +245,7 @@ class Organization extends Controller
         $data['view'] = 'users';
         $data['header'] = 'user';
         $data['user'] = 'active';
+        // dd("upd");
         return view('organization.dashboard',  $data);
     }
 
@@ -274,6 +275,7 @@ class Organization extends Controller
         $data['header'] = 'users';
         $data['add_user'] = 'active';
         $data['categories']  = Category::where("org_no", Auth::guard('organization')->user()->org_id)->cursor();
+        // dd("dd");
         return view('organization.dashboard',  $data);
     }
 

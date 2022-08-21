@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Clsses</label>
-                            <select class="form-control" name="cat_class[]" id="exampleFormControlSelect1" multiple>
+                            <select class="form-control select2" name="cat_class[]" id="exampleFormControlSelect1" multiple="multiple">
                                 @php
                                     $categories = App\Models\Category::where('cat_status', 1)->get();
                                 @endphp

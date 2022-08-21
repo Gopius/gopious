@@ -51,6 +51,11 @@
 
 		    @case('users')
 		        <!--begin::Page Scripts(used by this page)-->
+				<script type="text/javascript">
+		    		$('#exampleFormControlSelect1').select2({
+					   placeholder: "Select atleast a class",
+					});
+		    	</script>
 				<script src="/assets/js/pages/instructor-user.js"></script>
 				<!--end::Page Scripts-->
 		        @break
