@@ -32,7 +32,9 @@
                             <label for="">Clsses</label>
                             <select class="form-control select2" name="cat_class[]" id="exampleFormControlSelect1" multiple="multiple">
                                 @php
-                                    $categories = App\Models\Category::where('cat_status', 1)->get();
+                                $org_no=auth('organization')->user()->org_id;
+                               
+                                    $categories = App\Models\Category::where('cat_status', 1)->where('org_no',$org_no)->get();
                                 @endphp
 
                                 <option value="none" disabled selected>Select Class</option>

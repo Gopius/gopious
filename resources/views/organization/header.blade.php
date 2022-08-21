@@ -52,9 +52,10 @@
 
 
 @php
-    $quizes= App\Models\Quiz::get();
-    $assignment= App\Models\Assignment::get();
-    $courses= App\Models\Course::get();
+	$instructors=auth('organization')->user()->instructors->pluck('instr_id')->toArray()??[];
+    $quizes= App\Models\Quiz::whereIn('instr_no',$instructors)->get();
+    $assignment= App\Models\Assignment::whereIn('instr_no',$instructors)->get();
+    $courses= App\Models\Course::whereIn('instr_no',$instructors)->get();
 
     $collection=collect($quizes);
     $notifications=$collection->merge($assignment)->merge($courses)->sortBy('created_at');
@@ -270,7 +271,7 @@
 													<!--begin::Title-->
 													<h4 class="d-flex flex-center rounded-top">
 														<span class="text-white">User Notifications</span>
-														<span class="btn btn-text btn-success btn-sm font-weight-bold btn-font-md ml-2">{{$notifications->count()}} new</span>
+														<span class="btn btn-text btn-success btn-sm font-weight-bold btn-font-md ml-2">{{$notifications->count()}} total</span>
 													</h4>
 													<!--end::Title-->
 													<!--begin::Tabs-->
