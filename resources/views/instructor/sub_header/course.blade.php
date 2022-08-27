@@ -28,9 +28,9 @@
 															<span class="menu-text">Polls</span>
 														</a>
 													</li>
-													
-													
-													
+
+
+
 												</ul>
 												<!--end::Nav-->
 											</div>
@@ -51,6 +51,6 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
-					
+
 					<!--end::Content-->
 					

@@ -405,9 +405,9 @@
 														</div>
 														<!--end::Scroll-->
 														<!--begin::Action-->
-														<div class="d-flex flex-center pt-7">
+														{{-- <div class="d-flex flex-center pt-7">
 															<a href="#" class="btn btn-light-primary font-weight-bold text-center">See All</a>
-														</div>
+														</div> --}}
 														<!--end::Action-->
 													</div>
 													<!--end::Tabpane-->

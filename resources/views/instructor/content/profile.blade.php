@@ -104,7 +104,7 @@
                                                                         </div>
                                                                         <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
                                                                     </div>
-                                                                    <button type="submit" class="btn btn-success m-2 ml-auto">upload image</button>
+                                                                    <button type="submit" class="btn btn-success m-2 ml-auto">Save changes</button>
                                                                 </form>
 															</div>
 														</div>

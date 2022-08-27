@@ -161,7 +161,7 @@ var KTDatatableDataLocalDemo = function() {
                     field: 'Actions',
                     title: 'Actions',
                     sortable: false,
-                    width: 125,
+                    width: 150,
                     overflow: 'visible',
                     autoHide: false,
                     template: function(row) {
@@ -187,7 +187,7 @@ var KTDatatableDataLocalDemo = function() {
                             </a>
                             </a>
                             <a href="instructor/classes/detail/${row.class.cat_id}">
-                            <i class="fa  fa-info-circle mx-2 fs-4"></i>
+                            <i class="fas fa-chart-bar"></i>
                             </a>
                         `;
                     },

@@ -1,7 +1,7 @@
 'use strict';
 // Class definition
 var mNetSource = [];
-var KTDatatableDataLocalDemo = function() {
+var KTDatatableDataLocalDemo = function () {
     // Private functions
 
     // demo initializer
@@ -49,6 +49,8 @@ var KTDatatableDataLocalDemo = function() {
                 field: 'poll_title',
                 autoHide: false,
                 title: 'Poll Title',
+                width: 100,
+
                 // template: (row)=> {
                 //     return `
                 //         <a
@@ -67,6 +69,7 @@ var KTDatatableDataLocalDemo = function() {
             }, {
                 field: 'm_created',
                 title: 'Start Date',
+                width: 100,
                 // template: (row)=> {
                 //     return `
                 //         <a
@@ -82,42 +85,48 @@ var KTDatatableDataLocalDemo = function() {
                 //         </a>
                 //     `
                 // },
-            }, {
-                field: 'm_end_date',
-                title: 'End Date',
-                // template: (row)=> {
-                //     return `
-                //         <a
-                //         data-toggle="modal" href="#updateInputModal"
-                //         data-type="date"
-                //         data-title="New End date"
-                //         data-name="end_date"
-                //         data-route="${row.update_route}"
-                //         >
-                //             ${row.m_end_date}
-                //             <i class="fa fa-pen mx-2 fs-4"></i>
+            },
+            // {
+            // field: 'm_end_date',
+            // title: 'End Date',
+            // // template: (row)=> {
+            // //     return `
+            // //         <a
+            // //         data-toggle="modal" href="#updateInputModal"
+            // //         data-type="date"
+            // //         data-title="New End date"
+            // //         data-name="end_date"
+            // //         data-route="${row.update_route}"
+            // //         >
+            // //             ${row.m_end_date}
+            // //             <i class="fa fa-pen mx-2 fs-4"></i>
 
-                //         </a>
-                //     `
-                // },
-            },  {
+            // //         </a>
+            // //     `
+            // // },
+            // },
+            {
                 field: 'm_count',
-                title: 'Number of Participants'
+                title: 'Total Participants',
+                width: 125,
+
             }, {
                 field: 'class.class_title',
                 title: 'Class Title',
-                template: (row)=>'<span class="label font-weight-bold label-lg label-success label-inline">' + row.class.cat_title + '</span>',
-            },  {
+                width: 100,
+
+                template: (row) => '<span class=" font-weight-bold   label-inline">' + row.class.cat_title + '</span>',
+            }, {
                 field: 'Actions',
                 title: 'Actions',
                 sortable: false,
                 width: 125,
                 overflow: 'visible',
                 autoHide: true,
-                template: function(row) {
+                template: function (row) {
                     return '\
-                            <a href="'+row.view_link+'" class="btn btn-sm btn-clean btn-icon mr-2" title="View details">                                <i class="flaticon-eye"></i>                            </a>\
-                            <a onclick="deleteAss('+row.poll_id+');" class="btn btn-sm btn-clean btn-icon" title="Delete">\
+                            <a href="'+ row.view_link + '" class="btn btn-sm btn-clean btn-icon mr-2" title="View details">                                <i class="flaticon-eye"></i>                            </a>\
+                            <a onclick="deleteAss('+ row.poll_id + ');" class="btn btn-sm btn-clean btn-icon" title="Delete">\
                                 <span class="svg-icon svg-icon-md">\
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -145,11 +154,11 @@ var KTDatatableDataLocalDemo = function() {
             }],
         });
 
-        $('#kt_datatable_search_status').on('change', function() {
+        $('#kt_datatable_search_status').on('change', function () {
             datatable.search($(this).val().toLowerCase(), 'Status');
         });
 
-        $('#kt_datatable_search_type').on('change', function() {
+        $('#kt_datatable_search_type').on('change', function () {
             datatable.search($(this).val().toLowerCase(), 'Type');
         });
 
@@ -158,47 +167,47 @@ var KTDatatableDataLocalDemo = function() {
 
     return {
         // Public functions
-        init: function() {
+        init: function () {
             // init dmeo
             demo();
         },
     };
 }();
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 
     getAllOrganizationCourses();
 });
 
 
-var getAllOrganizationCourses = async ()=>{
+var getAllOrganizationCourses = async () => {
     await fetch('/instructor/polls-all')
-    .then((resp)=>resp.json())
-    .then((result)=>{
-        // console.log(result);
-        mNetSource = result;
-        KTDatatableDataLocalDemo.init();
-    });
+        .then((resp) => resp.json())
+        .then((result) => {
+            // console.log(result);
+            mNetSource = result;
+            KTDatatableDataLocalDemo.init();
+        });
 }
 
-var deleteAss = async (ass_id)=>{
-    if(!confirm('are you sure?')) return false;
+var deleteAss = async (ass_id) => {
+    if (!confirm('are you sure?')) return false;
     KTApp.blockPage({
-              overlayColor: 'red',
-              opacity: 0.1,
-              state: 'primary' // a bootstrap color
-            });
-    await fetch(window.location.href+'/delete/'+ass_id
-        )
-    .then((result)=>result.json())
-    .then((data)=>{
-        window.location.reload();
+        overlayColor: 'red',
+        opacity: 0.1,
+        state: 'primary' // a bootstrap color
+    });
+    await fetch(window.location.href + '/delete/' + ass_id
+    )
+        .then((result) => result.json())
+        .then((data) => {
+            window.location.reload();
 
-    })
-    .catch((e)=>{
-        console.log(e);
-        alert(e);
-    })
-    ;
+        })
+        .catch((e) => {
+            console.log(e);
+            alert(e);
+        })
+        ;
 }
 
