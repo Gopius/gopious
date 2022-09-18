@@ -50,7 +50,7 @@ var KTDatatableDataLocalDemo = function() {
             }, {
                 field: 'learner_email',
                 title: 'Email'
-            },{
+            }, {
                 field: 'Classes',
                 title: 'Classes',
                 template: function(row) {
@@ -74,7 +74,7 @@ var KTDatatableDataLocalDemo = function() {
                 autoHide: false,
                 template: function(row) {
                     return '\
-                            <a href="'+row.url+'" class="btn btn-sm btn-clean btn-icon mr-2" title="View Reports">\
+                            <a href="' + row.url + '" class="btn btn-sm btn-clean btn-icon mr-2" title="View Reports">\
                                 <i class="far fa-chart-bar"></i>\
                             </a>\
                            \
@@ -108,7 +108,7 @@ jQuery(document).ready(function() {
     getAllOrganizationCourses();
 });
 
-let getDropDownItem =  (arr = [])=>{
+let getDropDownItem = (arr = []) => {
     let strC = '';
     arr.forEach(element => {
         strC += `<a class="dropdown-item">${element.cat_title}</a>`
@@ -116,12 +116,12 @@ let getDropDownItem =  (arr = [])=>{
     return strC;
 }
 
-var getAllOrganizationCourses = async ()=>{
+var getAllOrganizationCourses = async() => {
     await fetch('/instructor/learners-all')
-    .then((resp)=>resp.json())
-    .then((result)=>{
-        console.log(result);
-        mNetSource = result;
-        KTDatatableDataLocalDemo.init();
-    });
+        .then((resp) => resp.json())
+        .then((result) => {
+            console.log(result);
+            mNetSource = result;
+            KTDatatableDataLocalDemo.init();
+        });
 }

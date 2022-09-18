@@ -324,15 +324,22 @@ class InstructorController extends Controller
     }
     function updateClass($account, Request $request, Category $class)
     {
+        // dd($request->all());
         $validated = $request->validate([
             'cat_title' => '',
             'cat_desc' => '',
             'cat_status' => '',
             'cat_code' => 'nullable|min:4|unique:categories,cat_code',
             'cat_max_student' => '',
+            'cover_image' => 'max:2048'
+
         ]);
         foreach ($validated as $key => $value) {
             if (!isset($value)) unset($validated[$key]);
+        }
+        $cover_image = $request->file('cover_image');
+        if ($cover_image) {
+            $validated['cat_cover_image'] = $cover_image->store('class_cover_images', 'public');
         }
         $validated['cat_status'] = (isset($validated['cat_status']) && $validated['cat_status'] === 'on') ? 1 : 0;
         $class->update($validated);

@@ -178,12 +178,12 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
-																{{-- <div class="mt-10 attachment_list">
+																<div class="mt-10 attachment_list">
 																	<div class="row w-100">
-																		<input onchange="validateFile(this)" type="file" name="post_attachment[]" required  accept="image/*,video/*"  class="form-control col-sm-11">
-																		<i  onclick="removeAttachment(this)" class="la la-trash text-danger text-hover-primary icon-xl m-0 col-sm-1 btn"></i>
+																		{{-- <input onchange="validateFile(this)" type="file" name="post_attachment[]" required  accept="image/*,video/*"  class="form-control col-sm-11"> --}}
+																		{{-- <i  onclick="removeAttachment(this)" class="la la-trash text-danger text-hover-primary icon-xl m-0 col-sm-1 btn"></i> --}}
 																	</div>
-																</div> --}}
+																</div>
 																<!--end::Toolbar-->
 															{{-- </form> --}}
 															<!--end::Form-->

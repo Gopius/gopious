@@ -36,18 +36,18 @@ var KTDatatableDataLocalDemo = function() {
             // columns definition
             // columns definition
             columns: [{
-                field: 'course_id',
-                title: '#',
-                sortable: false,
-                width: 20,
-                type: 'number',
-                selector: {
-                    class: ''
-                },
-                textAlign: 'center',
-            }, {
-                field: 'learner_name',
-                title: 'Student Name',
+                    field: 'course_id',
+                    title: '#',
+                    sortable: false,
+                    width: 20,
+                    type: 'number',
+                    selector: {
+                        class: ''
+                    },
+                    textAlign: 'center',
+                }, {
+                    field: 'learner_name',
+                    title: 'Student Name',
                 },
                 // {
                 // field: 'learner_phone',
@@ -60,31 +60,32 @@ var KTDatatableDataLocalDemo = function() {
                 // },
                 // },
                 {
-                field: 'submission_date',
-                title: 'Submission Date'
-            }, {
-                field: '',
-                title: 'Score',
-                template: function(row) {
-                    return '\
-                            <label style="border-radius:0;" class="w-100 label label-lg label-light-success" >'+Math.round((row.correct_option/row.questions.length)*100, 2)+'% '+ ( (row.unattented_option>0)?'('+row.unattented_option+' unattented)' : '') +' </label>\
+                    field: 'submission_date',
+                    title: 'Submission Date'
+                }, {
+                    field: '',
+                    title: 'Score',
+                    template: function(row) {
+                        return '\
+                            <label style="border-radius:0;" class="w-100 label label-lg label-light-success" >' + Math.round((row.correct_option / row.questions.length) * 100, 2) + '% ' + ((row.unattented_option > 0) ? '(' + row.unattented_option + ' unattented)' : '') + ' </label>\
                             \
                         ';
-                },
-            }, {
-                field: 'Actions',
-                title: 'Actions',
-                sortable: false,
-                width: 125,
-                overflow: 'visible',
-                autoHide: false,
-                template: function(row) {
-                    return '\
-                            <a href="'+row.view_link+'" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">                                <i class="flaticon-eye"></i>                            </a>\
+                    },
+                }, {
+                    field: 'Actions',
+                    title: 'Actions',
+                    sortable: false,
+                    width: 125,
+                    overflow: 'visible',
+                    autoHide: false,
+                    template: function(row) {
+                        return '\
+                            <a href="' + row.view_link + '" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">                                <i class="flaticon-eye"></i>                            </a>\
                             \
                         ';
-                },
-            }],
+                    },
+                }
+            ],
         });
 
         $('#kt_datatable_search_status').on('change', function() {
@@ -113,12 +114,12 @@ jQuery(document).ready(function() {
 });
 
 
-var getAllSubmittedAssignments = async ()=>{
-    await fetch(window.location.href+'/submissions')
-    .then((resp)=>resp.json())
-    .then((result)=>{
-        console.log(result);
-        mNetSource = result;
-        KTDatatableDataLocalDemo.init();
-    });
+var getAllSubmittedAssignments = async() => {
+    await fetch(window.location.href + '/submissions')
+        .then((resp) => resp.json())
+        .then((result) => {
+            console.log(result);
+            mNetSource = result;
+            KTDatatableDataLocalDemo.init();
+        });
 }

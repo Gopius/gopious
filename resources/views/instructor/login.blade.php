@@ -69,8 +69,8 @@
 					<div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
 						<!--begin::Logo-->
 						<a href="#" class="text-center pt-2">
-							@if ( $setting->organization->org_long_icon_url !== null)
-								<img src="{{ asset('storage/'.$setting->organization->org_avatar_url) }}" class="max-h-75px" alt="" />
+							@if ( $setting->organization->org_square_icon_url !== null)
+								<img src="{{ asset('storage/'.$setting->organization->org_square_icon_url) }}" class="max-h-75px" alt="" />
 							@else
 								<img src="{{ asset('assets/media/logos/primary-logo.png') }}" class="max-h-75px" alt="" />
 							@endif
